@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bdpmpe5lhr3tr" path="res://Scripts/character.gd" id="1_lkv7d"]
 [ext_resource type="Texture2D" uid="uid://bjowxx3o2twy" path="res://Assets/Textures/character_posh_fish_sprite_sheet.PNG" id="2_ushfy"]
 [ext_resource type="Texture2D" uid="uid://cn1vc8inm2ru5" path="res://Assets/Textures/character_eel_sprite_sheet.PNG" id="3_owm7s"]
+[ext_resource type="Texture2D" uid="uid://c0mdoluf2uahw" path="res://Assets/Textures/character_octopus_sprite_sheet.PNG" id="4_nytcm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owm7s"]
 atlas = ExtResource("2_ushfy")
@@ -18,6 +19,14 @@ region = Rect2(384, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kq7hj"]
 atlas = ExtResource("3_owm7s")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvyft"]
+atlas = ExtResource("4_nytcm")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm6ib"]
+atlas = ExtResource("4_nytcm")
 region = Rect2(480, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejsiy"]
@@ -36,6 +45,14 @@ region = Rect2(192, 0, 96, 96)
 atlas = ExtResource("3_owm7s")
 region = Rect2(288, 0, 96, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5mnj"]
+atlas = ExtResource("4_nytcm")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w85my"]
+atlas = ExtResource("4_nytcm")
+region = Rect2(192, 0, 96, 96)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_reotu"]
 atlas = ExtResource("2_ushfy")
 region = Rect2(0, 0, 96, 96)
@@ -50,6 +67,14 @@ region = Rect2(0, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2daya"]
 atlas = ExtResource("3_owm7s")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et0tf"]
+atlas = ExtResource("4_nytcm")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgna0"]
+atlas = ExtResource("4_nytcm")
 region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ev0h"]
@@ -78,6 +103,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mvyft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm6ib")
+}],
+"loop": 1,
+"name": &"angry_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ejsiy")
 }, {
 "duration": 1.0,
@@ -96,6 +132,17 @@ animations = [{
 }],
 "loop": 1,
 "name": &"happy_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5mnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w85my")
+}],
+"loop": 1,
+"name": &"happy_2",
 "speed": 5.0
 }, {
 "frames": [{
@@ -119,6 +166,17 @@ animations = [{
 "loop": 1,
 "name": &"normal_1",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_et0tf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgna0")
+}],
+"loop": 1,
+"name": &"normal_2",
+"speed": 5.0
 }]
 
 [node name="Character" type="Node2D" unique_id=415892053]
@@ -126,5 +184,5 @@ script = ExtResource("1_lkv7d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=47634370]
 sprite_frames = SubResource("SpriteFrames_4ev0h")
-animation = &"angry_1"
-frame_progress = 0.07467508
+animation = &"happy_2"
+frame_progress = 0.053180702
