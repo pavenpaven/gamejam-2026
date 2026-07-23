@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://7eg5ixmj3byc"]
+
+[ext_resource type="Script" uid="uid://bdpmpe5lhr3tr" path="res://Scripts/character.gd" id="1_lkv7d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ev0h"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"character0",
+"speed": 5.0
+}]
+
+[node name="Character" type="Node2D" unique_id=415892053]
+script = ExtResource("1_lkv7d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=47634370]
+sprite_frames = SubResource("SpriteFrames_4ev0h")
+animation = &"character0"
