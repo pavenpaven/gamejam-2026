@@ -21,7 +21,7 @@ var ingredient_paths_background = [
 var ingredient_structure =[
 	[[1,0],[2,0],[0,1],[1,1]], ## worm
 	[[1,0],[0,1],[1,1],[2,1]], ## coral
-	[[0,0],[1,0],[2,0],[1,0],[2,1]], ## jellyfish
+	[[0,0],[1,0],[2,0],[0,1],[2,1]], ## jellyfish
 	[[0,0],[1,0],[0,1]], ## seaweed
 	[[0,0],[1,0],[0,1],[1,1]], ## starfish
 	[[0,0],[1,0]] ## tomato
@@ -47,5 +47,5 @@ func midpoint(points):
 		minx = min(i[0], minx)
 		miny = min(i[1], miny)
 		maxx = max(i[0], maxx)
-		maxy = max(i[1], maxx)
+		maxy = max(i[1], maxy)
 	return Vector2(maxx - minx, maxy - miny) / 2

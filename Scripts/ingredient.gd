@@ -23,7 +23,7 @@ func _ready() -> void:
 		var rect  = RectangleShape2D.new()
 		rect.size = Vector2(16,16)
 		shape.shape = rect
-		shape.position = 16*(Vector2(i[0], i[1]) - m) + Vector2(0,8)
+		shape.position = 16*(Vector2(i[0], i[1]) - m)# + Vector2(0,8)
 		print(shape.position)
 		area.add_child(shape)
 
