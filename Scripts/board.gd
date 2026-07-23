@@ -4,6 +4,7 @@ extends Node2D
 @export  var height = 6
 @export  var tilesz = 16
 @onready var tilemap = $TileMapLayer
+@onready var view = $SubViewport
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,10 +12,6 @@ func _ready() -> void:
 	for i in range(width):
 		for j in range(height):
 			tilemap.set_cell(Vector2(i,j), 0, Vector2(0,0))
-
-func _input(event):
-	if event is InputEventMouseButton:
-		print(event.position)
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

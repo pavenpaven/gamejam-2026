@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c3ibv754kp4fc"]
 
 [ext_resource type="Script" uid="uid://dqdsgi8ujoyf7" path="res://Scripts/board.gd" id="1_tnbny"]
-[ext_resource type="Texture2D" uid="uid://b02kaf8w2n6t1" path="res://Assets/Textures/pizza_tile.png" id="2_2wvcj"]
+[ext_resource type="Texture2D" uid="uid://dx831wxnaegs" path="res://Assets/Textures/new_pizza_tile_16.PNG" id="2_uh3b8"]
 [ext_resource type="Texture2D" uid="uid://b8fq86mydu8jl" path="res://Assets/Textures/pizza_crust.PNG" id="3_uh3b8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uh3b8"]
-texture = ExtResource("2_2wvcj")
+texture = ExtResource("2_uh3b8")
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_tnbny"]
@@ -18,7 +18,7 @@ script = ExtResource("1_tnbny")
 tile_set = SubResource("TileSet_tnbny")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=19052126]
-position = Vector2(55, -12)
+position = Vector2(54, -11)
 texture = ExtResource("3_uh3b8")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1169332443]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=2058353965]
