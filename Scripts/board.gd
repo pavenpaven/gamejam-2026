@@ -6,13 +6,17 @@ extends Node2D
 @onready var tilemap = $TileMapLayer
 @onready var view = $SubViewport
 
+var tiles = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tilemap.tile_set.tile_size = Vector2(tilesz, tilesz)
 	for i in range(width):
+		tiles.append([])
 		for j in range(height):
+			tiles[-1].append(-1)
 			tilemap.set_cell(Vector2(i,j), 0, Vector2(0,0))
-		
+			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

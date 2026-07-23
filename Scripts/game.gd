@@ -20,8 +20,11 @@ func drop(ingredient):
 		ingredient.onboard = true
 		print(ingredient.centroid())
 		print(pos - ingredient.centroid())
-		ingredient.position = (round(pos + ingredient.centroid() - Vector2(0.5,0.5)) + Vector2(0.5, 0.5) - ingredient.centroid()) * board.tilesz + board.position
-		
+		ingredient.position = (round(pos + ingredient.centroid() - Vector2(0.5,0.5)) + Vector2(0.5, 0.5) - ingredient.centroid()) * board.tilesz + board.position # roundy fuckery
+		for i in ingredient.area.get_children():
+			print(round(pos + ingredient.centroid() - Vector2(0.5,0.5))
+				+ i.position/16
+				- ingredient.centroid())
 	else:
 		ingredient.onboard = false
 		

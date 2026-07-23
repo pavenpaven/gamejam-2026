@@ -31,6 +31,7 @@ func _collision_inp(viewport, event, shape):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 && event.pressed:
 			grab_vec = position - get_parent().get_real_pos(event.position)
+			z_index  = 4
 			grabbed  = true
 
 func centroid():
@@ -55,6 +56,7 @@ func _input(event):
 				if grabbed:
 					get_parent().drop(self)
 				grabbed = false
+				z_index = 0
 				
 
 	if event is InputEventKey:
