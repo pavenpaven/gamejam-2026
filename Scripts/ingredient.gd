@@ -10,8 +10,8 @@ var origin
 
 func _ready() -> void:
 	origin = position
-	if type < len(Globals.ingredient_texs):
-		sprite.texture = Globals.ingredient_back_texs[type]
+	if type >= len(Globals.ingredient_texs):
+		print("indexing outside of ingredient_texs list, type:", type, "len(Globals.ingredient_texs):", len(Globals.ingredient_texs))
 
 
 func _process(delta: float) -> void:
