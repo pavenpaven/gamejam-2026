@@ -1,13 +1,17 @@
 [gd_scene format=3 uid="uid://c3ibv754kp4fc"]
 
 [ext_resource type="Script" uid="uid://dqdsgi8ujoyf7" path="res://Scripts/board.gd" id="1_tnbny"]
+[ext_resource type="Texture2D" uid="uid://b02kaf8w2n6t1" path="res://Assets/Textures/pizza_tile.png" id="2_2wvcj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ev0h"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uh3b8"]
+texture = ExtResource("2_2wvcj")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tnbny"]
+sources/0 = SubResource("TileSetAtlasSource_uh3b8")
 
 [node name="Board" type="Node2D" unique_id=1679172358]
 script = ExtResource("1_tnbny")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=803876493]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=190041045]
-shape = SubResource("RectangleShape2D_4ev0h")
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=293152189]
+tile_set = SubResource("TileSet_tnbny")
