@@ -3,25 +3,29 @@ extends Node
 var ingredient_texs      = []
 var ingredient_back_texs = []
 
-var ingredient_paths = ["ingredient_worm.PNG",
+var ingredient_paths = [
+	"ingredient_worm.PNG",
 	"ingrediens_coral.PNG",
 	"ingrediens_jellyfish.PNG",
 	"ingrediens_seaweed.PNG",
 	"ingrediens_starfish.PNG",
 	"ingrediens_tomato.PNG"]
-var ingredient_paths_background = ["ingredient_worm_background.PNG",
+var ingredient_paths_background = [
+	"ingredient_worm_background.PNG",
 	"ingrediens_coral_background.PNG",
 	"ingrediens_jellyfish_background.PNG",
 	"ingrediens_seaweed_background.PNG",
 	"ingrediens_starfish_background.PNG",
 	"ingrediens_tomato_background.PNG"]
 
-var ingredient_structure =[[[0,0],[1,0],[1,1],[2,1]],
-	[[0,0],[1,0],[1,1],[2,1]],
-	[[0,0],[0,1],[1,1],[2,1],[3,1],[3,0]],
-	[[0,0],[0,1],[1,1]],
-	[[0,0],[1,0],[1,1],[0,1]],
-	[[0,0],[1,0],[1,1],[0,1]]]
+var ingredient_structure =[
+	[[1,0],[2,0],[0,1],[1,1]], ## worm
+	[[1,0],[0,1],[1,1],[2,1]], ## coral
+	[[0,0],[1,0],[2,0],[1,0],[2,1]], ## jellyfish
+	[[0,0],[1,0],[0,1]], ## seaweed
+	[[0,0],[1,0],[0,1],[1,1]], ## starfish
+	[[0,0],[1,0]] ## tomato
+	]
 
 func _ready():
 	randomize()
