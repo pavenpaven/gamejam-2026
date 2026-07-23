@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dqdsgi8ujoyf7" path="res://Scripts/board.gd" id="1_tnbny"]
 [ext_resource type="Texture2D" uid="uid://b02kaf8w2n6t1" path="res://Assets/Textures/pizza_tile.png" id="2_2wvcj"]
+[ext_resource type="Texture2D" uid="uid://b8fq86mydu8jl" path="res://Assets/Textures/pizza_crust.PNG" id="3_uh3b8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uh3b8"]
 texture = ExtResource("2_2wvcj")
@@ -15,3 +16,9 @@ script = ExtResource("1_tnbny")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=293152189]
 tile_set = SubResource("TileSet_tnbny")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=19052126]
+position = Vector2(55, -12)
+texture = ExtResource("3_uh3b8")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1169332443]

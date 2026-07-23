@@ -1,7 +1,7 @@
 extends Node2D
 
-@export  var width  = 8
-@export  var height = 8
+@export  var width  = 6
+@export  var height = 6
 @export  var tilesz = 16
 @onready var tilemap = $TileMapLayer
 
