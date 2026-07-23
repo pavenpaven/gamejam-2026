@@ -17,14 +17,15 @@ func _process(delta: float) -> void:
 func drop(ingredient):
 	var pos = (ingredient.position - board.position) / board.tilesz
 	if pos.x > 0 && pos.x < board.width && pos.y > 0 && pos.y < board.width:
+		var center = ingredient.centroid() 
 		ingredient.onboard = true
-		print(ingredient.centroid())
-		print(pos - ingredient.centroid())
-		ingredient.position = (round(pos + ingredient.centroid() - Vector2(0.5,0.5)) + Vector2(0.5, 0.5) - ingredient.centroid()) * board.tilesz + board.position # roundy fuckery
-		for i in ingredient.area.get_children():
-			print(round(pos + ingredient.centroid() - Vector2(0.5,0.5))
-				+ i.position/16
-				- ingredient.centroid())
+		print(pos - center)
+		ingredient.position = (round(pos + center - Vector2(0.5,0.5)) + Vector2(0.5, 0.5) - center) * board.tilesz + board.position # roundy fuckery
+		var points
+		for i in Globals.ingredient_structure[ingredient.type]:
+			for k in range(ingredient.rot):
+				i = [-i[1], i[0]]
+			print(round(pos + center - Vector2(0.5,0.5)) + Vector2(i[0], i[1]))
 	else:
 		ingredient.onboard = false
 		
