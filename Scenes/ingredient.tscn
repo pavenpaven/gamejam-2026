@@ -10,3 +10,4 @@ script = ExtResource("1_2hfw8")
 [node name="Area2D" type="Area2D" parent="." unique_id=1161933973]
 
 [connection signal="input_event" from="Area2D" to="." method="_collision_inp"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

@@ -21,13 +21,13 @@ func _ready() -> void:
 	for i in Globals.ingredient_structure[type]:
 		var shape = CollisionShape2D.new()
 		var rect  = RectangleShape2D.new()
-		rect.size = Vector2(20,20)
+		rect.size = Vector2(16,16)
 		shape.shape = rect
-		shape.position = position + Vector2(i[0], i[1]) - m
+		shape.position = 16*(Vector2(i[0], i[1]) - m) + Vector2(0,8)
+		print(shape.position)
 		area.add_child(shape)
 
 func _collision_inp(viewport, event, shape):
-	print(event)
 	if event is InputEventMouseButton:
 		if event.button_index == 1 && event.pressed:
 			grabbed = true
@@ -41,6 +41,11 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
+			print(event.position)
 			if not event.pressed:
 				grabbed = false
 				get_parent().drop(self)
+
+
+func _on_area_2d_mouse_entered() -> void:
+	print("in")
