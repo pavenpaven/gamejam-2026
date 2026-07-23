@@ -37,7 +37,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_nytcm")
 }],
 "loop": 1,
-"name": &"angry",
+"name": &"angry_0",
 "speed": 5.0
 }, {
 "frames": [{
@@ -48,7 +48,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_2mse5")
 }],
 "loop": 1,
-"name": &"happy",
+"name": &"happy_0",
 "speed": 5.0
 }, {
 "frames": [{
@@ -59,15 +59,18 @@ animations = [{
 "texture": SubResource("AtlasTexture_a5ess")
 }],
 "loop": 1,
-"name": &"normal",
+"name": &"normal_0",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"normal_1",
 "speed": 5.0
 }]
 
-[node name="Character1" type="Node2D" unique_id=415892053]
+[node name="Character" type="Node2D" unique_id=415892053]
 script = ExtResource("1_lkv7d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=47634370]
 sprite_frames = SubResource("SpriteFrames_4ev0h")
-animation = &"happy"
-autoplay = "normal"
-frame_progress = 0.9722207
+animation = &"normal_1"
