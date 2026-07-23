@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b3apeg0e5mimq" path="res://Scripts/game.gd" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://c3ibv754kp4fc" path="res://Scenes/board.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://d8hf2p75ty37" path="res://Scenes/ingredient.tscn" id="3_wrm1d"]
 
 [node name="Game" type="Node2D" unique_id=1385651455]
 script = ExtResource("1_ebmjs")
@@ -11,3 +12,6 @@ position = Vector2(-47, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=703375740]
 zoom = Vector2(3, 3)
+
+[node name="Ingredient" parent="." unique_id=1199109778 instance=ExtResource("3_wrm1d")]
+position = Vector2(103, 35)

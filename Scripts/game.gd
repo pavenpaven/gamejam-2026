@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 func get_board_pos(pos):
-	return (pos -  get_viewport().get_visible_rect().size/2) / camera.zoom - board.position
+	return ((pos -  get_viewport().get_visible_rect().size/2) / camera.zoom - board.position) / board.tilesz
 
 func _input(event):
 	if event is InputEventMouseButton:
