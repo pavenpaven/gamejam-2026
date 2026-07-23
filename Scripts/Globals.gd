@@ -16,6 +16,8 @@ var ingredient_paths_background = ["ingredient_worm_background.PNG",
 	"ingrediens_starfish_background.PNG",
 	"ingrediens_tomato_background.PNG"]
 
+var ingredient_structure =[[[0,0],[1,0],[1,1],[2,1]],]
+
 func _ready():
 	randomize()
 	for i in ingredient_paths:
