@@ -8,7 +8,10 @@ extends Node2D
 	, $Ingredient7, $Ingredient8]
 
 
+var characters = []
 var challange
+
+var NUM_REQS = 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +21,8 @@ func _ready() -> void:
 
 func random_request():
 	var type = randi() % 2
+	if type == 1:
+		type = randi() % 2
 	if type == 0:
 		var cola = randi() % 4
 		var colb = randi() % 3
@@ -36,13 +41,20 @@ func incompatible(req1, req2):
 	if req1["type"] == 0 || req1["type"] == 1:
 		return ((req1["cola"] == req2["cola"] && req1["colb"] == req2["colb"])
 			||  (req1["cola"] == req2["colb"] && req1["colb"] == req2["cola"]))
-	print("warning missing isomorphism check")
+	print("warning missing incompatiblility check")
+	return true
 	
 	
 func generate_challange():
 	challange = []
+	for i in characters:
+		remove_child(i)
+		i.queue_free()
+	characters = []
+	var character_scene = preload("res://Scenes/character.tscn")
+	
 	var count = 0
-	while count < 4: # theres an infite loop here if you set the count bound to high
+	while count < NUM_REQS: # theres an infite loop here if you set the count bound to high
 		var req = random_request()
 		var allowed = true
 		for j in challange:
@@ -52,7 +64,20 @@ func generate_challange():
 		if allowed:
 			challange.append(req)
 			count += 1
-		
+
+	count = 0
+	while count < NUM_REQS:
+		var char_id = randi() % 8
+		var unique = true
+		for i in characters:
+			unique = unique && (not i.character_id == char_id)
+		if unique:
+			var inst = character_scene.instantiate()
+			inst.character_id = char_id
+			inst.position = Vector2(-150 + 100 * count, -50)
+			add_child(inst)
+			characters.append(inst)
+			count += 1
 	
 func col_string(col):
 	return ["blue", "red", "green", "brown"][col]
@@ -101,8 +126,7 @@ func drop(ingredient):
 		var points = get_tile_pos(ingredient, round(pos - center - Vector2(0.5,0.5)))
 		for i in points:
 			if (i.y >= board.height || i.x >= board.width || i.x < 0 || i.y < 0) || board.tiles[i.y][i.x] != -1:
-				ingredient.onboard = false
-				ingredient.position = ingredient.origin
+				ingredient.reset()
 				return
 
 		for i in points:
@@ -110,8 +134,7 @@ func drop(ingredient):
 
 		ingredient.putdownsfx.play()
 	else:
-		ingredient.onboard = false
-		ingredient.position = ingredient.origin
+		ingredient.reset()
 
 func grab(ingredient):
 	var pos = (ingredient.position - board.position) / board.tilesz
@@ -136,7 +159,7 @@ func score():
 		if i["type"] == 0:
 			points += board.border_between(i["cola"], i["colb"])
 		if i["type"] == 1:
-			points -= board.border_between(i["cola"], i["colb"]) * 2
+			points -= board.border_between(i["cola"], i["colb"]) * 4
 	return points
 			
 
@@ -147,6 +170,8 @@ func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				print("You got ", score(), " points")
 				generate_challange()
 				print_challange()
+				board.reset_tiles()
 				for i in ingredients:
 					i.onboard = false
 					i.position = i.origin
+					

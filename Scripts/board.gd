@@ -11,6 +11,10 @@ var tiles = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	tilemap.tile_set.tile_size = Vector2(tilesz, tilesz)
+	reset_tiles()
+
+func reset_tiles():
+	tiles = []
 	for i in range(width):
 		tiles.append([])
 		for j in range(height):

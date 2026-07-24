@@ -46,7 +46,12 @@ func centroid():
 		points.append(i)
 	return Globals.midpoint(points)
 	
-
+func reset():
+	position = origin
+	onboard = false
+	rot = 0
+	rotation = 0
+	
 func _process(delta: float) -> void:
 	if grabbed || onboard:
 		sprite.texture = Globals.ingredient_texs[type]
