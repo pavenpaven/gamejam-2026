@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d0n6li73dtgt3" path="res://Assets/Textures/character_squid_sprite_sheet.PNG" id="5_ejsiy"]
 [ext_resource type="Texture2D" uid="uid://onrjiaej05hm" path="res://Assets/Textures/character_silver_eel_sprite_sheet.PNG" id="6_2mse5"]
 [ext_resource type="Texture2D" uid="uid://dhprbyksrcaa2" path="res://Assets/Textures/character_blue_fish_sprite_sheet.PNG" id="7_reotu"]
+[ext_resource type="Texture2D" uid="uid://d1xniva3gnjv0" path="res://Assets/Textures/character_yellow_octopus_sprite_sheet.PNG" id="8_a5ess"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_owm7s"]
 atlas = ExtResource("2_ushfy")
@@ -54,6 +55,14 @@ region = Rect2(384, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l51qt"]
 atlas = ExtResource("7_reotu")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oslv8"]
+atlas = ExtResource("8_a5ess")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t521p"]
+atlas = ExtResource("8_a5ess")
 region = Rect2(480, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ejsiy"]
@@ -104,6 +113,14 @@ region = Rect2(192, 0, 96, 96)
 atlas = ExtResource("7_reotu")
 region = Rect2(288, 0, 96, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1duu"]
+atlas = ExtResource("8_a5ess")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_755ar"]
+atlas = ExtResource("8_a5ess")
+region = Rect2(288, 0, 96, 96)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_reotu"]
 atlas = ExtResource("2_ushfy")
 region = Rect2(0, 0, 96, 96)
@@ -150,6 +167,14 @@ region = Rect2(0, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_80j7h"]
 atlas = ExtResource("7_reotu")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqg7f"]
+atlas = ExtResource("8_a5ess")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a5am"]
+atlas = ExtResource("8_a5ess")
 region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ev0h"]
@@ -222,6 +247,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_oslv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t521p")
+}],
+"loop": 1,
+"name": &"angry_6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ejsiy")
 }, {
 "duration": 1.0,
@@ -284,6 +320,17 @@ animations = [{
 }],
 "loop": 1,
 "name": &"happy_5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1duu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_755ar")
+}],
+"loop": 1,
+"name": &"happy_6",
 "speed": 5.0
 }, {
 "frames": [{
@@ -351,6 +398,17 @@ animations = [{
 "loop": 1,
 "name": &"normal_5",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqg7f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a5am")
+}],
+"loop": 1,
+"name": &"normal_6",
+"speed": 5.0
 }]
 
 [node name="Character" type="Node2D" unique_id=415892053]
@@ -358,5 +416,4 @@ script = ExtResource("1_lkv7d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=47634370]
 sprite_frames = SubResource("SpriteFrames_4ev0h")
-animation = &"angry_5"
-frame_progress = 0.27886626
+animation = &"angry_6"
