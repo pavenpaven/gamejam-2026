@@ -32,11 +32,9 @@ func random_request():
 		return {"type":1, "cola": cola, "colb": colb}
 	
 
-func isomorphic(req1, req2):
-	if not req1["type"] == req2["type"]:
-		return false
+func incompatible(req1, req2):
 	if req1["type"] == 0 || req1["type"] == 1:
-		return ((req1["cola"] == req2["cola"] && req1["colb"] == req2["cola"])
+		return ((req1["cola"] == req2["cola"] && req1["colb"] == req2["colb"])
 			||  (req1["cola"] == req2["colb"] && req1["colb"] == req2["cola"]))
 	print("warning missing isomorphism check")
 	
@@ -46,12 +44,12 @@ func generate_challange():
 	var count = 0
 	while count < 4: # theres an infite loop here if you set the count bound to high
 		var req = random_request()
-		var unique = true
+		var allowed = true
 		for j in challange:
-			if isomorphic(req, j):
-				unique = false
+			if incompatible(req, j):
+				allowed = false
 				
-		if unique:
+		if allowed:
 			challange.append(req)
 			count += 1
 		
@@ -149,3 +147,6 @@ func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				print("You got ", score(), " points")
 				generate_challange()
 				print_challange()
+				for i in ingredients:
+					i.onboard = false
+					i.position = i.origin
