@@ -1,8 +1,10 @@
 extends Node2D
 
-@export  var type   = 0
-@onready var sprite = $Sprite2D
-@onready var area   = $Area2D
+@export  var type       = 0
+@onready var sprite     = $Sprite2D
+@onready var area       = $Area2D
+@onready var pickupsfx  = $pickupsfx
+@onready var putdownsfx = $putdownsfx
 
 var grabbed         = false
 var onboard         = false
@@ -33,6 +35,8 @@ func _collision_inp(viewport, event, shape):
 			grab_vec = position - get_parent().get_real_pos(event.position)
 			z_index  = 4
 			grabbed  = true
+			pickupsfx.play()
+			if onboard: get_parent().grab(self)
 
 func centroid():
 	var points = []
