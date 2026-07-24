@@ -45,7 +45,7 @@ func drop(ingredient):
 #"		var new_center = Globals.midpoint(points)
 		var points = get_tile_pos(ingredient, round(pos - center - Vector2(0.5,0.5)))
 		for i in points:
-			if board.tiles[i.y][i.x] != -1:
+			if (i.y >= board.height || i.x >= board.width || i.x < 0 || i.y < 0) || board.tiles[i.y][i.x] != -1:
 				ingredient.onboard = false
 				ingredient.position = ingredient.origin
 				return
