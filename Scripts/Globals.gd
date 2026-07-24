@@ -9,14 +9,18 @@ var ingredient_paths = [
 	"ingrediens_jellyfish.PNG",
 	"ingrediens_seaweed.PNG",
 	"ingrediens_starfish.PNG",
-	"ingrediens_tomato.PNG"]
+	"ingrediens_tomato.PNG",
+	"ingrediens_snail.PNG",
+	"ingrediens_straight_seaweed.PNG"]
 var ingredient_paths_background = [
 	"ingredient_worm_background.PNG",
 	"ingrediens_coral_background.PNG",
 	"ingrediens_jellyfish_background.PNG",
 	"ingrediens_seaweed_background.PNG",
 	"ingrediens_starfish_background.PNG",
-	"ingrediens_tomato_background.PNG"]
+	"ingrediens_tomato_background.PNG",
+	"ingrediens_snail_background.PNG",
+	"ingrediens_straight_seaweed_background.PNG"]
 
 var ingredient_structure =[
 	[[1,0],[2,0],[0,1],[1,1]], ## worm
@@ -24,7 +28,22 @@ var ingredient_structure =[
 	[[0,0],[1,0],[2,0],[0,1],[2,1]], ## jellyfish
 	[[0,0],[1,0],[0,1]], ## seaweed
 	[[0,0],[1,0],[0,1],[1,1]], ## starfish
-	[[0,0],[1,0]] ## tomato
+	[[0,0],[1,0]], ## tomato
+	[[0,0],[1,0],[0,1],[1,1]], ## snail
+	[[0,0],[1,0],[2,0]] ## Straight seaweed
+	]
+
+# blue 0 red 1 green 2 brown 3
+
+var ingredient_color  = [
+	3, # worm
+	1, # coral
+	0, # jelly
+	2, # seaweed
+	0, # starfish
+	1, # tomat
+	3, # snail
+	2  # straight seaweed
 	]
 
 func _ready():

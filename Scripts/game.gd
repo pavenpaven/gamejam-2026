@@ -2,11 +2,32 @@ extends Node2D
 
 @onready var camera      = $Camera2D
 @onready var board       = $Board
-@onready var ingredients = [$Ingredient, $Ingredient2, $Ingredient3, $Ingredient4]
+@onready var ingredients = [
+	$Ingredient, $Ingredient2, $Ingredient3
+	, $Ingredient4, $Ingredient5, $Ingredient6
+	, $Ingredient7, $Ingredient8]
+
+
+var challange
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	challange = generate_challange()
+	print_challange()
+
+func generate_challange():
+	return [
+		{"type": 0, "cola": 2, "colb": 1},
+		{"type": 0, "cola": 0, "colb": 3},
+		{"type": 0, "cola": 2, "colb": 3}]
+
+func col_string(col):
+	return ["blue", "red", "green", "brown"][col]
+
+func print_challange():
+	for i in challange:
+		if i["type"] == 0:
+			print("Color ", col_string(i["cola"]) , " next to ", col_string(i["colb"]))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -39,7 +60,6 @@ func drop(ingredient):
 	if pos.x > 0 && pos.x < board.width && pos.y > 0 && pos.y < board.width:
 		var center = ingredient.centroid() 
 		ingredient.onboard = true
-		print(pos - center)
 		ingredient.position = (round(pos + center - Vector2(0.5,0.5)) + Vector2(0.5, 0.5) - center) * board.tilesz + board.position # roundy fuckery
 
 #"		var new_center = Globals.midpoint(points)
@@ -53,12 +73,10 @@ func drop(ingredient):
 		for i in points:
 			board.tiles[i.y][i.x] = ingredient.type
 
-		for i in board.tiles:
-			print(i)
 		ingredient.putdownsfx.play()
-			
 	else:
 		ingredient.onboard = false
+		ingredient.position = ingredient.origin
 
 func grab(ingredient):
 	var pos = (ingredient.position - board.position) / board.tilesz
@@ -76,3 +94,17 @@ func get_board_pos(pos):
 func _input(event):
 	if event is InputEventMouseButton:
 		pass
+
+func score():
+	var points = 0
+	for i in challange:
+		if i["type"] == 0:
+			points += board.border_between(i["cola"], i["colb"])
+	return points
+			
+
+func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == 1:
+			if event.pressed:
+				print("You got ", score(), " points")
