@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dhprbyksrcaa2" path="res://Assets/Textures/character_blue_fish_sprite_sheet.PNG" id="7_reotu"]
 [ext_resource type="Texture2D" uid="uid://d1xniva3gnjv0" path="res://Assets/Textures/character_yellow_octopus_sprite_sheet.PNG" id="8_a5ess"]
 [ext_resource type="Texture2D" uid="uid://dfy21k0on44ub" path="res://Assets/Textures/character_green_squid_sprite_sheet.PNG" id="9_wbia7"]
+[ext_resource type="Texture2D" uid="uid://b0r2gue7cf7na" path="res://Assets/Textures/dialogue_box.PNG" id="10_kq7hj"]
+[ext_resource type="Texture2D" uid="uid://ca3w17ufawr7g" path="res://Assets/Textures/dialogue_blue.PNG" id="11_le1tg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mogsv"]
 atlas = ExtResource("2_wbia7")
@@ -476,3 +478,19 @@ script = ExtResource("1_lkv7d")
 sprite_frames = SubResource("SpriteFrames_4ev0h")
 animation = &"angry_2"
 frame_progress = 0.8474848
+
+[node name="Textbox" type="Sprite2D" parent="." unique_id=422771404]
+position = Vector2(25, -21)
+texture = ExtResource("10_kq7hj")
+
+[node name="Message1" type="Sprite2D" parent="." unique_id=1831156863]
+position = Vector2(13, -42)
+texture = ExtResource("11_le1tg")
+
+[node name="Message2" type="Sprite2D" parent="." unique_id=1456483641]
+position = Vector2(29, -42)
+texture = ExtResource("11_le1tg")
+
+[node name="Message3" type="Sprite2D" parent="." unique_id=203603026]
+position = Vector2(45, -42)
+texture = ExtResource("11_le1tg")
