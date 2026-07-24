@@ -12,15 +12,50 @@ var challange
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	challange = generate_challange()
+	generate_challange()
 	print_challange()
 
-func generate_challange():
-	return [
-		{"type": 0, "cola": 2, "colb": 1},
-		{"type": 0, "cola": 0, "colb": 3},
-		{"type": 0, "cola": 2, "colb": 3}]
 
+func random_request():
+	var type = randi() % 2
+	if type == 0:
+		var cola = randi() % 4
+		var colb = randi() % 3
+		if colb >= cola: # this is to enshure that they are distinct
+			colb += 1
+		return {"type":0, "cola": cola, "colb": colb}
+	if type == 1:
+		var cola = randi() % 4
+		var colb = randi() % 3
+		if colb >= cola:
+			colb += 1
+		return {"type":1, "cola": cola, "colb": colb}
+	
+
+func isomorphic(req1, req2):
+	if not req1["type"] == req2["type"]:
+		return false
+	if req1["type"] == 0 || req1["type"] == 1:
+		return ((req1["cola"] == req2["cola"] && req1["colb"] == req2["cola"])
+			||  (req1["cola"] == req2["colb"] && req1["colb"] == req2["cola"]))
+	print("warning missing isomorphism check")
+	
+	
+func generate_challange():
+	challange = []
+	var count = 0
+	while count < 4: # theres an infite loop here if you set the count bound to high
+		var req = random_request()
+		var unique = true
+		for j in challange:
+			if isomorphic(req, j):
+				unique = false
+				
+		if unique:
+			challange.append(req)
+			count += 1
+		
+	
 func col_string(col):
 	return ["blue", "red", "green", "brown"][col]
 
@@ -28,6 +63,8 @@ func print_challange():
 	for i in challange:
 		if i["type"] == 0:
 			print("Color ", col_string(i["cola"]) , " next to ", col_string(i["colb"]))
+		if i["type"] == 1:
+			print("Color ", col_string(i["cola"]) , " not next to ", col_string(i["colb"]))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -100,6 +137,8 @@ func score():
 	for i in challange:
 		if i["type"] == 0:
 			points += board.border_between(i["cola"], i["colb"])
+		if i["type"] == 1:
+			points -= board.border_between(i["cola"], i["colb"]) * 2
 	return points
 			
 
@@ -108,3 +147,5 @@ func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if event.button_index == 1:
 			if event.pressed:
 				print("You got ", score(), " points")
+				generate_challange()
+				print_challange()
