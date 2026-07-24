@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d8hf2p75ty37"]
 
 [ext_resource type="Script" uid="uid://xnitrmgla5lm" path="res://Scripts/ingredient.gd" id="1_2hfw8"]
+[ext_resource type="AudioStream" uid="uid://byv8lj68o5my5" path="res://Assets/Sounds/sfx_pick_up_ingredient.mp3" id="2_pc44i"]
+[ext_resource type="AudioStream" uid="uid://bwpcrv3upask1" path="res://Assets/Sounds/sfx_put_down_ingredient.mp3" id="3_vp2j4"]
 
 [node name="Ingredient" type="Node2D" unique_id=1199109778]
 script = ExtResource("1_2hfw8")
@@ -8,6 +10,12 @@ script = ExtResource("1_2hfw8")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151008426]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1161933973]
+
+[node name="pickupsfx" type="AudioStreamPlayer2D" parent="." unique_id=832240682]
+stream = ExtResource("2_pc44i")
+
+[node name="putdownsfx" type="AudioStreamPlayer2D" parent="." unique_id=1529969126]
+stream = ExtResource("3_vp2j4")
 
 [connection signal="input_event" from="Area2D" to="." method="_collision_inp"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
