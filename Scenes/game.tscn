@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://hw82plyy58gv"]
 
 [ext_resource type="Script" uid="uid://b3apeg0e5mimq" path="res://Scripts/game.gd" id="1_ebmjs"]
+[ext_resource type="Texture2D" uid="uid://7qviljphvfs4" path="res://Assets/Textures/fish_resturant_table.png" id="2_i6g32"]
 [ext_resource type="PackedScene" uid="uid://c3ibv754kp4fc" path="res://Scenes/board.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://d8hf2p75ty37" path="res://Scenes/ingredient.tscn" id="3_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://dwapdu4mwwkls" path="res://Assets/Textures/button_serve.PNG" id="4_3dryh"]
@@ -12,11 +13,16 @@ size = Vector2(60, 27)
 [node name="Game" type="Node2D" unique_id=1385651455]
 script = ExtResource("1_ebmjs")
 
+[node name="table" type="Sprite2D" parent="." unique_id=297293345]
+position = Vector2(-1, -4)
+texture = ExtResource("2_i6g32")
+
 [node name="Board" parent="." unique_id=1679172358 instance=ExtResource("2_qxrlw")]
-position = Vector2(-47, 0)
+position = Vector2(-48, 20)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=703375740]
-zoom = Vector2(3, 3)
+offset = Vector2(0, -7)
+zoom = Vector2(2.5, 2.5)
 
 [node name="Ingredient" parent="." unique_id=1199109778 instance=ExtResource("3_wrm1d")]
 position = Vector2(-171, 12)
@@ -27,18 +33,18 @@ position = Vector2(146, 54)
 type = 2
 
 [node name="Ingredient3" parent="." unique_id=1917520847 instance=ExtResource("3_wrm1d")]
-position = Vector2(146, 5)
+position = Vector2(146, 11)
 
 [node name="Ingredient4" parent="." unique_id=1005182173 instance=ExtResource("3_wrm1d")]
 position = Vector2(-168, 52)
 type = 5
 
 [node name="Ingredient5" parent="." unique_id=892406819 instance=ExtResource("3_wrm1d")]
-position = Vector2(-113, 54)
+position = Vector2(148, 94)
 type = 3
 
 [node name="Ingredient6" parent="." unique_id=792072122 instance=ExtResource("3_wrm1d")]
-position = Vector2(-112, 12)
+position = Vector2(90, 93)
 type = 1
 
 [node name="Ingredient7" parent="." unique_id=1882070615 instance=ExtResource("3_wrm1d")]
@@ -50,13 +56,13 @@ position = Vector2(90, 11)
 type = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1826442636]
-position = Vector2(0, -23)
+position = Vector2(-2, -4)
 texture = ExtResource("4_3dryh")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1988183933]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=788803187]
-position = Vector2(1, -23.5)
+position = Vector2(-1, -4)
 shape = SubResource("RectangleShape2D_4ev0h")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1217599994]
