@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://7eg5ixmj3byc"]
 
 [ext_resource type="Script" uid="uid://bdpmpe5lhr3tr" path="res://Scripts/character.gd" id="1_lkv7d"]
-[ext_resource type="Texture2D" uid="uid://bjowxx3o2twy" path="res://Assets/Textures/character_posh_fish_sprite_sheet.PNG" id="2_ushfy"]
+[ext_resource type="Texture2D" uid="uid://de8w3f1mxr83k" path="res://Assets/Textures/character_good_posh_fish.PNG" id="2_wbia7"]
 [ext_resource type="Texture2D" uid="uid://cn1vc8inm2ru5" path="res://Assets/Textures/character_eel_sprite_sheet.PNG" id="3_owm7s"]
 [ext_resource type="Texture2D" uid="uid://c0mdoluf2uahw" path="res://Assets/Textures/character_octopus_sprite_sheet.PNG" id="4_nytcm"]
 [ext_resource type="Texture2D" uid="uid://bpb46tnrh68lp" path="res://Assets/Textures/character_good_squid.PNG" id="5_wbia7"]
@@ -10,12 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://d1xniva3gnjv0" path="res://Assets/Textures/character_yellow_octopus_sprite_sheet.PNG" id="8_a5ess"]
 [ext_resource type="Texture2D" uid="uid://dfy21k0on44ub" path="res://Assets/Textures/character_green_squid_sprite_sheet.PNG" id="9_wbia7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_owm7s"]
-atlas = ExtResource("2_ushfy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mogsv"]
+atlas = ExtResource("2_wbia7")
 region = Rect2(384, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nytcm"]
-atlas = ExtResource("2_ushfy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksrvg"]
+atlas = ExtResource("2_wbia7")
 region = Rect2(480, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wbia7"]
@@ -74,12 +74,12 @@ region = Rect2(192, 0, 96, 96)
 atlas = ExtResource("9_wbia7")
 region = Rect2(288, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ejsiy"]
-atlas = ExtResource("2_ushfy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1p4j"]
+atlas = ExtResource("2_wbia7")
 region = Rect2(192, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mse5"]
-atlas = ExtResource("2_ushfy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc5tg"]
+atlas = ExtResource("2_wbia7")
 region = Rect2(288, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7iw6i"]
@@ -138,12 +138,12 @@ region = Rect2(384, 0, 96, 96)
 atlas = ExtResource("9_wbia7")
 region = Rect2(480, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_reotu"]
-atlas = ExtResource("2_ushfy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef6re"]
+atlas = ExtResource("2_wbia7")
 region = Rect2(0, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a5ess"]
-atlas = ExtResource("2_ushfy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a51um"]
+atlas = ExtResource("2_wbia7")
 region = Rect2(96, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_le1tg"]
@@ -206,10 +206,10 @@ region = Rect2(96, 0, 96, 96)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_owm7s")
+"texture": SubResource("AtlasTexture_mogsv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nytcm")
+"texture": SubResource("AtlasTexture_ksrvg")
 }],
 "loop": 1,
 "name": &"angry_0",
@@ -294,10 +294,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ejsiy")
+"texture": SubResource("AtlasTexture_k1p4j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2mse5")
+"texture": SubResource("AtlasTexture_xc5tg")
 }],
 "loop": 1,
 "name": &"happy_0",
@@ -382,10 +382,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_reotu")
+"texture": SubResource("AtlasTexture_ef6re")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a5ess")
+"texture": SubResource("AtlasTexture_a51um")
 }],
 "loop": 1,
 "name": &"normal_0",
@@ -474,6 +474,5 @@ script = ExtResource("1_lkv7d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=47634370]
 sprite_frames = SubResource("SpriteFrames_4ev0h")
-animation = &"happy_3"
-frame = 1
-frame_progress = 0.8765598
+animation = &"angry_0"
+frame_progress = 0.40874386
