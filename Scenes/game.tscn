@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c3ibv754kp4fc" path="res://Scenes/board.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://d8hf2p75ty37" path="res://Scenes/ingredient.tscn" id="3_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://dwapdu4mwwkls" path="res://Assets/Textures/button_serve.PNG" id="4_3dryh"]
+[ext_resource type="AudioStream" uid="uid://n3373wpjck3o" path="res://Assets/Sounds/fish_pizza_music.mp3" id="5_wowpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ev0h"]
 size = Vector2(60, 27)
@@ -57,5 +58,11 @@ texture = ExtResource("4_3dryh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=788803187]
 position = Vector2(1, -23.5)
 shape = SubResource("RectangleShape2D_4ev0h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1217599994]
+stream = ExtResource("5_wowpa")
+volume_db = -9.123
+autoplay = true
+parameters/looping = true
 
 [connection signal="input_event" from="Area2D" to="." method="_button_event"]
