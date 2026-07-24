@@ -1,11 +1,35 @@
 [gd_scene format=3 uid="uid://hw82plyy58gv"]
 
 [ext_resource type="Script" uid="uid://b3apeg0e5mimq" path="res://Scripts/game.gd" id="1_ebmjs"]
+[ext_resource type="Texture2D" uid="uid://itwv4aymht1f" path="res://Assets/Textures/background_sea_sprite_sheet.PNG" id="2_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://7qviljphvfs4" path="res://Assets/Textures/fish_resturant_table.png" id="2_i6g32"]
 [ext_resource type="PackedScene" uid="uid://c3ibv754kp4fc" path="res://Scenes/board.tscn" id="2_qxrlw"]
+[ext_resource type="Texture2D" uid="uid://m0tvysgi48lq" path="res://Assets/Textures/button_clicked.PNG" id="2_v158k"]
 [ext_resource type="PackedScene" uid="uid://d8hf2p75ty37" path="res://Scenes/ingredient.tscn" id="3_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://dwapdu4mwwkls" path="res://Assets/Textures/button_serve.PNG" id="4_3dryh"]
 [ext_resource type="AudioStream" uid="uid://n3373wpjck3o" path="res://Assets/Sounds/fish_pizza_music.mp3" id="5_wowpa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v158k"]
+atlas = ExtResource("2_1l0tm")
+region = Rect2(0, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4fw4"]
+atlas = ExtResource("2_1l0tm")
+region = Rect2(384, 0, 384, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lcbng"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v158k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4fw4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ev0h"]
 size = Vector2(60, 27)
@@ -13,56 +37,80 @@ size = Vector2(60, 27)
 [node name="Game" type="Node2D" unique_id=1385651455]
 script = ExtResource("1_ebmjs")
 
+[node name="Buttonclicked" type="Sprite2D" parent="." unique_id=1773152416]
+position = Vector2(-101, 34)
+texture = ExtResource("2_v158k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=429753201]
+sprite_frames = SubResource("SpriteFrames_lcbng")
+autoplay = "default"
+
+[node name="table3" type="Sprite2D" parent="." unique_id=159096589]
+position = Vector2(-205, 17)
+rotation = 1.5707964
+texture = ExtResource("2_i6g32")
+
+[node name="table2" type="Sprite2D" parent="." unique_id=162145225]
+position = Vector2(202, 25)
+rotation = -1.5707964
+texture = ExtResource("2_i6g32")
+
 [node name="table" type="Sprite2D" parent="." unique_id=297293345]
-position = Vector2(-1, -4)
+position = Vector2(0.5000019, -4)
+scale = Vector2(1.1119791, 1)
+texture = ExtResource("2_i6g32")
+
+[node name="table4" type="Sprite2D" parent="." unique_id=1413958192]
+position = Vector2(-2, -142)
+rotation = 3.1415927
 texture = ExtResource("2_i6g32")
 
 [node name="Board" parent="." unique_id=1679172358 instance=ExtResource("2_qxrlw")]
-position = Vector2(-48, 20)
+position = Vector2(-48, 2)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=703375740]
-offset = Vector2(0, -7)
-zoom = Vector2(2.5, 2.5)
+offset = Vector2(0, -12)
+zoom = Vector2(2.7, 2.7)
 
 [node name="Ingredient" parent="." unique_id=1199109778 instance=ExtResource("3_wrm1d")]
-position = Vector2(-171, 12)
+position = Vector2(179, 5)
 type = 4
 
 [node name="Ingredient2" parent="." unique_id=612837696 instance=ExtResource("3_wrm1d")]
-position = Vector2(146, 54)
+position = Vector2(136, 40)
 type = 2
 
 [node name="Ingredient3" parent="." unique_id=1917520847 instance=ExtResource("3_wrm1d")]
-position = Vector2(146, 11)
+position = Vector2(135, 6)
 
 [node name="Ingredient4" parent="." unique_id=1005182173 instance=ExtResource("3_wrm1d")]
-position = Vector2(-168, 52)
+position = Vector2(180, 41)
 type = 5
 
 [node name="Ingredient5" parent="." unique_id=892406819 instance=ExtResource("3_wrm1d")]
-position = Vector2(148, 94)
+position = Vector2(138, 74)
 type = 3
 
 [node name="Ingredient6" parent="." unique_id=792072122 instance=ExtResource("3_wrm1d")]
-position = Vector2(90, 93)
+position = Vector2(89, 75)
 type = 1
 
 [node name="Ingredient7" parent="." unique_id=1882070615 instance=ExtResource("3_wrm1d")]
-position = Vector2(89, 54)
+position = Vector2(89, 41)
 type = 6
 
 [node name="Ingredient8" parent="." unique_id=874482107 instance=ExtResource("3_wrm1d")]
-position = Vector2(90, 11)
+position = Vector2(88, 5)
 type = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1826442636]
-position = Vector2(-2, -4)
+position = Vector2(-101, 34)
 texture = ExtResource("4_3dryh")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1988183933]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=788803187]
-position = Vector2(-1, -4)
+position = Vector2(-102, 35)
 shape = SubResource("RectangleShape2D_4ev0h")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1217599994]

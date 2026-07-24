@@ -46,6 +46,17 @@ var ingredient_color  = [
 	2  # straight seaweed
 	]
 
+var separate_symbol_tex
+var neigh_good_tex
+var color_symbol_texs = []
+
+var color_symbols_paths = [
+	"dialogue_blue.PNG",
+	"dialogue_red.PNG",
+	"dialogue_green.PNG",
+	"dialogue_brown.PNG"
+	]
+
 func _ready():
 	randomize()
 	for i in ingredient_paths:
@@ -55,6 +66,16 @@ func _ready():
 	for i in ingredient_paths_background:
 		var im = Image.load_from_file("res://Assets/Textures/" + i)
 		ingredient_back_texs.append(ImageTexture.create_from_image(im))
+
+	for i in color_symbols_paths:
+		var im = Image.load_from_file("res://Assets/Textures/" + i)
+		color_symbol_texs.append(ImageTexture.create_from_image(im))
+
+	var im = Image.load_from_file("res://Assets/Textures/show_neighbor_good.PNG")
+	neigh_good_tex = ImageTexture.create_from_image(im)
+		
+	im = Image.load_from_file("res://Assets/Textures/dialogue_seperate.PNG")
+	separate_symbol_tex = ImageTexture.create_from_image(im)
 
 
 func midpoint(points):

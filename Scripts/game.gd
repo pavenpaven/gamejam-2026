@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var camera      = $Camera2D
 @onready var board       = $Board
+@onready var buttonclick = $Buttonclicked
 @onready var ingredients = [
 	$Ingredient, $Ingredient2, $Ingredient3
 	, $Ingredient4, $Ingredient5, $Ingredient6
@@ -74,10 +75,12 @@ func generate_challange():
 		if unique:
 			var inst = character_scene.instantiate()
 			inst.character_id = char_id
-			inst.position = Vector2(-150 + 100 * count, -50)
+			inst.position = Vector2(-155 + 100 * count, -65)
 			add_child(inst)
 			characters.append(inst)
+			inst.set_textbox(challange[count])
 			count += 1
+
 	
 func col_string(col):
 	return ["blue", "red", "green", "brown"][col]
@@ -164,14 +167,16 @@ func score():
 			
 
 func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton:	
 		if event.button_index == 1:
 			if event.pressed:
 				print("You got ", score(), " points")
 				generate_challange()
 				print_challange()
 				board.reset_tiles()
+				buttonclick.z_index = 2
 				for i in ingredients:
-					i.onboard = false
-					i.position = i.origin
+					i.reset()
+			else:
+				buttonclick.z_index = 0
 					
