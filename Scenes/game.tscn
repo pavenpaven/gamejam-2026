@@ -128,13 +128,24 @@ parameters/looping = true
 [node name="Timer" type="Timer" parent="." unique_id=704487286]
 
 [node name="timertext" type="Label" parent="." unique_id=802498468]
+texture_filter = 1
 offset_left = -169.0
 offset_top = 72.0
 offset_right = -17.0
 offset_bottom = 95.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.81960785, 0, 0, 1)
 theme_override_fonts/font = SubResource("FontVariation_lcbng")
 text = "Allah suriya hamiya"
 label_settings = SubResource("LabelSettings_4ev0h")
+
+[node name="Label" type="Label" parent="." unique_id=1081582067]
+offset_left = -169.0
+offset_top = 72.0
+offset_right = -76.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(1, 0.17254902, 0.23921569, 1)
+theme_override_fonts/font = ExtResource("9_h4fw4")
+theme_override_font_sizes/font_size = 40
+text = "ndjnkjngjk"
 
 [connection signal="input_event" from="Area2D" to="." method="_button_event"]
