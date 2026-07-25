@@ -35,11 +35,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ev0h"]
 size = Vector2(60, 27)
 
-[sub_resource type="FontVariation" id="FontVariation_lcbng"]
-base_font = ExtResource("9_h4fw4")
-
-[sub_resource type="LabelSettings" id="LabelSettings_4ev0h"]
-
 [node name="Game" type="Node2D" unique_id=1385651455]
 script = ExtResource("1_ebmjs")
 
@@ -127,18 +122,7 @@ parameters/looping = true
 
 [node name="Timer" type="Timer" parent="." unique_id=704487286]
 
-[node name="timertext" type="Label" parent="." unique_id=802498468]
-texture_filter = 1
-offset_left = -169.0
-offset_top = 72.0
-offset_right = -17.0
-offset_bottom = 95.0
-theme_override_colors/font_color = Color(0.81960785, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_lcbng")
-text = "Allah suriya hamiya"
-label_settings = SubResource("LabelSettings_4ev0h")
-
-[node name="Label" type="Label" parent="." unique_id=1081582067]
+[node name="Timertext" type="Label" parent="." unique_id=1081582067]
 offset_left = -169.0
 offset_top = 72.0
 offset_right = -76.0
