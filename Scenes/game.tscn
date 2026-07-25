@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dwapdu4mwwkls" path="res://Assets/Textures/button_serve.PNG" id="4_3dryh"]
 [ext_resource type="AudioStream" uid="uid://n3373wpjck3o" path="res://Assets/Sounds/fish_pizza_music.mp3" id="5_wowpa"]
 [ext_resource type="FontFile" uid="uid://bnsaqjw4tdtu3" path="res://Assets/m3x6.ttf" id="9_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://c3ipo5sdcjju4" path="res://Assets/Textures/texture_clock.PNG" id="9_ldgsr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v158k"]
 atlas = ExtResource("2_1l0tm")
@@ -122,14 +123,18 @@ parameters/looping = true
 
 [node name="Timer" type="Timer" parent="." unique_id=704487286]
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1046041186]
+position = Vector2(-130, 80)
+texture = ExtResource("9_ldgsr")
+
 [node name="Timertext" type="Label" parent="." unique_id=1081582067]
-offset_left = -169.0
-offset_top = 72.0
-offset_right = -76.0
-offset_bottom = 104.0
+offset_left = -171.0
+offset_top = 61.0
+offset_right = -78.0
+offset_bottom = 93.0
 theme_override_colors/font_color = Color(1, 0.17254902, 0.23921569, 1)
 theme_override_fonts/font = ExtResource("9_h4fw4")
 theme_override_font_sizes/font_size = 37
-text = "ndjnkjngjk"
+text = "nd"
 
 [connection signal="input_event" from="Area2D" to="." method="_button_event"]
