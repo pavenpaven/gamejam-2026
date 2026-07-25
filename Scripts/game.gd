@@ -17,7 +17,7 @@ var characters = []
 var challange
 
 var timer_length = 60
-var NUM_REQS = 4
+var round_num    = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -60,7 +60,7 @@ func random_request():
 		var colb = randi() % 3
 		if colb >= cola: # this is to enshure that they are distinct
 			colb += 1
-		return {"type":0, "cola": cola, "colb": colb}
+		return {"type":0, "cola": cola, "colb": colb, "num": 3}
 	if type == 1:
 		var cola = randi() % 4
 		var colb = randi() % 3
@@ -86,6 +86,14 @@ func generate_challange():
 		i.queue_free()
 	characters = []
 	var character_scene = preload("res://Scenes/character.tscn")
+
+	var NUM_REQS
+	if round_num == 0:
+		NUM_REQS = 2
+	if round_num == 1:
+		NUM_REQS = 3
+	if round_num > 1:
+		NUM_REQS = 4
 	
 	var count = 0
 	while count < NUM_REQS: # theres an infite loop here if you set the count bound to high
@@ -114,6 +122,7 @@ func generate_challange():
 			inst.set_textbox(challange[count])
 			count += 1
 
+	round_num += 1
 	
 func col_string(col):
 	return ["blue", "red", "green", "brown"][col]
@@ -241,7 +250,6 @@ func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:	
 		if event.button_index == 1:
 			if event.pressed && can_serve: 
-				print("You got ", score(), " points")
 				generate_challange()
 				print_challange()
 				board.reset_tiles()

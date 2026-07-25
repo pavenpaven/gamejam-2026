@@ -58,6 +58,16 @@ var color_symbols_paths = [
 	"dialogue_brown.PNG"
 	]
 
+var num_texs = []
+var num_paths = [
+	"texture_1.PNG",
+	"texture_2.PNG",
+	"texture_3.PNG",
+	"texture_4.PNG",
+	]
+
+var x_tex 
+
 func _ready():
 	randomize()
 	for i in ingredient_paths:
@@ -72,7 +82,14 @@ func _ready():
 		var im = Image.load_from_file("res://Assets/Textures/" + i)
 		color_symbol_texs.append(ImageTexture.create_from_image(im))
 
-	var im = Image.load_from_file("res://Assets/Textures/show_neighbor_good.PNG")
+	for i in num_paths:
+		var im = Image.load_from_file("res://Assets/Textures/" + i)
+		num_texs.append(ImageTexture.create_from_image(im))
+
+	var im = Image.load_from_file("res://Assets/Textures/texture_x.PNG")
+	x_tex = ImageTexture.create_from_image(im)
+			
+	im = Image.load_from_file("res://Assets/Textures/show_neighbor_good.PNG")
 	neigh_good_tex = ImageTexture.create_from_image(im)
 
 	im = Image.load_from_file("res://Assets/Textures/show_neighbor_bad.PNG")
@@ -80,6 +97,8 @@ func _ready():
 		
 	im = Image.load_from_file("res://Assets/Textures/dialogue_seperate.PNG")
 	separate_symbol_tex = ImageTexture.create_from_image(im)
+
+	
 
 
 func midpoint(points):
