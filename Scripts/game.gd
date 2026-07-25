@@ -17,7 +17,7 @@ var can_serve = false
 var characters = []
 var challange
 
-var timer_length = 6
+var timer_length = 60
 var round_num    = 0
 
 # Called when the node enters the scene tree for the first time.
