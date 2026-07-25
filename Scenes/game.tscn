@@ -117,7 +117,7 @@ shape = SubResource("RectangleShape2D_4ev0h")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1217599994]
 stream = ExtResource("5_wowpa")
-volume_db = -9.123
+volume_db = -11.86
 autoplay = true
 parameters/looping = true
 
