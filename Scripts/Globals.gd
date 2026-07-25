@@ -74,35 +74,27 @@ var slash_tex
 func _ready():
 	randomize()
 	for i in ingredient_paths:
-		var im = Image.load_from_file("res://Assets/Textures/" + i)
-		ingredient_texs.append(ImageTexture.create_from_image(im))
+		var im : Texture2D = load("res://Assets/Textures/" + i)
+		ingredient_texs.append(im)
 
 	for i in ingredient_paths_background:
-		var im = Image.load_from_file("res://Assets/Textures/" + i)
-		ingredient_back_texs.append(ImageTexture.create_from_image(im))
+		var im = load("res://Assets/Textures/" + i)
+		ingredient_back_texs.append(im)
 
 	for i in color_symbols_paths:
-		var im = Image.load_from_file("res://Assets/Textures/" + i)
-		color_symbol_texs.append(ImageTexture.create_from_image(im))
+		var im = load("res://Assets/Textures/" + i)
+		color_symbol_texs.append(im)
 
 	for i in num_paths:
-		var im = Image.load_from_file("res://Assets/Textures/" + i)
-		num_texs.append(ImageTexture.create_from_image(im))
+		var im = load("res://Assets/Textures/" + i)
+		num_texs.append(im)
 
-	var im = Image.load_from_file("res://Assets/Textures/texture_x.PNG")
-	x_tex = ImageTexture.create_from_image(im)
-
-	im = Image.load_from_file("res://Assets/Textures/texture_slash.PNG")
-	slash_tex = ImageTexture.create_from_image(im)
-			
-	im = Image.load_from_file("res://Assets/Textures/show_neighbor_good.PNG")
-	neigh_good_tex = ImageTexture.create_from_image(im)
-
-	im = Image.load_from_file("res://Assets/Textures/show_neighbor_bad.PNG")
-	neigh_bad_tex = ImageTexture.create_from_image(im)
-		
-	im = Image.load_from_file("res://Assets/Textures/dialogue_seperate.PNG")
-	separate_symbol_tex = ImageTexture.create_from_image(im)
+	
+	x_tex               = load("res://Assets/Textures/texture_x.PNG")
+	slash_tex           = load("res://Assets/Textures/texture_slash.PNG")
+	neigh_good_tex      = load("res://Assets/Textures/show_neighbor_good.PNG")
+	neigh_bad_tex       = load("res://Assets/Textures/show_neighbor_bad.PNG")
+	separate_symbol_tex = load("res://Assets/Textures/dialogue_seperate.PNG")
 
 	
 
