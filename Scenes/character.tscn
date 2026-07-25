@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://butl52p8giwwq" path="res://Assets/Textures/character_good_green_squid.PNG" id="9_l1rcp"]
 [ext_resource type="Texture2D" uid="uid://b0r2gue7cf7na" path="res://Assets/Textures/dialogue_box.PNG" id="10_kq7hj"]
 [ext_resource type="Texture2D" uid="uid://ca3w17ufawr7g" path="res://Assets/Textures/dialogue_blue.PNG" id="11_le1tg"]
+[ext_resource type="Texture2D" uid="uid://b8n1a56cqsj5c" path="res://Assets/Textures/texture_happy.PNG" id="12_l1rcp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mogsv"]
 atlas = ExtResource("2_wbia7")
@@ -493,3 +494,7 @@ texture = ExtResource("11_le1tg")
 [node name="Message3" type="Sprite2D" parent="." unique_id=203603026]
 position = Vector2(45, -42)
 texture = ExtResource("11_le1tg")
+
+[node name="Face" type="Sprite2D" parent="." unique_id=1100801425]
+position = Vector2(58, -30)
+texture = ExtResource("12_l1rcp")
