@@ -117,7 +117,25 @@ func get_tile_pos(ingredient, pos):
 	for i in points:
 		out.append(pos + Vector2(i[0], i[1]) - Vector2(minx, miny))
 	return out
-			
+
+func update_faces():
+	for i in range(len(challange)):
+		var req = challange[i]
+		if req["type"] == 0:
+			if board.border_between(req["cola"], req["colb"]) >= 3:
+				var chara = characters[i]
+				chara.sprite.animation = "happy_" + str(chara.character_id)
+			else:
+				var chara = characters[i]
+				chara.sprite.animation = "normal_" + str(chara.character_id)
+		if req["type"] == 1:
+			if board.border_between(req["cola"], req["colb"]) == 0:
+				var chara = characters[i]
+				chara.sprite.animation = "normal_" + str(chara.character_id)
+			else:
+				var chara = characters[i]
+				chara.sprite.animation = "angry_" + str(chara.character_id)
+
 func drop(ingredient):
 	var pos = (ingredient.position - board.position) / board.tilesz
 	if pos.x > 0 && pos.x < board.width && pos.y > 0 && pos.y < board.width:
@@ -136,6 +154,8 @@ func drop(ingredient):
 			board.tiles[i.y][i.x] = ingredient.type
 
 		ingredient.putdownsfx.play()
+		board.update_borders(challange)
+		update_faces()
 	else:
 		ingredient.reset()
 
@@ -145,6 +165,9 @@ func grab(ingredient):
 	var points = get_tile_pos(ingredient, round(pos - center - Vector2(0.5,0.5)))
 	for i in points:
 		board.tiles[i.y][i.x] = -1
+
+	board.update_borders(challange)
+	update_faces()
 
 func get_real_pos(pos):
 	return (pos - get_viewport().get_visible_rect().size/2) / camera.zoom

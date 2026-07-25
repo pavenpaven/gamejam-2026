@@ -13,6 +13,9 @@ sources/0 = SubResource("TileSetAtlasSource_uh3b8")
 
 [node name="Board" type="Node2D" unique_id=1679172358]
 script = ExtResource("1_tnbny")
+width = null
+height = null
+tilesz = null
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=293152189]
 tile_set = SubResource("TileSet_tnbny")

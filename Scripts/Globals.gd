@@ -48,6 +48,7 @@ var ingredient_color  = [
 
 var separate_symbol_tex
 var neigh_good_tex
+var neigh_bad_tex
 var color_symbol_texs = []
 
 var color_symbols_paths = [
@@ -73,6 +74,9 @@ func _ready():
 
 	var im = Image.load_from_file("res://Assets/Textures/show_neighbor_good.PNG")
 	neigh_good_tex = ImageTexture.create_from_image(im)
+
+	im = Image.load_from_file("res://Assets/Textures/show_neighbor_bad.PNG")
+	neigh_bad_tex = ImageTexture.create_from_image(im)
 		
 	im = Image.load_from_file("res://Assets/Textures/dialogue_seperate.PNG")
 	separate_symbol_tex = ImageTexture.create_from_image(im)
