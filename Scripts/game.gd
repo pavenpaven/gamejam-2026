@@ -3,7 +3,8 @@ extends Node2D
 @onready var camera      = $Camera2D
 @onready var board       = $Board
 @onready var buttonclick = $Buttonclicked
-@onready var timertext   = $timertext
+@onready var timertext   = $Timertext
+@onready var timer       = $Timer
 @onready var ingredients = [
 	$Ingredient, $Ingredient2, $Ingredient3
 	, $Ingredient4, $Ingredient5, $Ingredient6
@@ -20,6 +21,7 @@ func _ready() -> void:
 	generate_challange()
 	print_challange()
 	update_faces()
+	
 
 
 func random_request():
@@ -50,6 +52,7 @@ func incompatible(req1, req2):
 	
 	
 func generate_challange():
+	timer.start(60)
 	challange = []
 	for i in characters:
 		remove_child(i)
@@ -97,6 +100,10 @@ func print_challange():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	var time_left = int(round(timer.time_left))
+	
+	timertext.text = str(time_left) + "s left"
+	
 	for ingredient in ingredients:
 		if ingredient.grabbed:
 			ingredient.position = get_real_pos(get_viewport().get_mouse_position()) + ingredient.grab_vec
@@ -211,3 +218,7 @@ func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			else:
 				buttonclick.z_index = 0
 					
+
+
+func _on_timer_timeout() -> void:
+	print("dead")
