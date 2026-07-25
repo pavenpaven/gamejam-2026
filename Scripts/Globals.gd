@@ -14,6 +14,7 @@ var ingredient_paths = [
 	"ingrediens_tomato.PNG",
 	"ingrediens_snail.PNG",
 	"ingrediens_straight_seaweed.PNG"]
+
 var ingredient_paths_background = [
 	"ingredient_worm_background.PNG",
 	"ingrediens_coral_background.PNG",
@@ -72,6 +73,9 @@ var num_paths = [
 
 var x_tex
 var slash_tex
+var green_text_box_tex
+var text_box_tex
+var dark_trans_tex
 
 func _ready():
 	randomize()
@@ -97,7 +101,9 @@ func _ready():
 	neigh_good_tex      = load("res://Assets/Textures/show_neighbor_good.PNG")
 	neigh_bad_tex       = load("res://Assets/Textures/show_neighbor_bad.PNG")
 	separate_symbol_tex = load("res://Assets/Textures/dialogue_seperate.PNG")
-
+	text_box_tex        = load("res://Assets/Textures/dialogue_box.PNG")
+	green_text_box_tex  = load("res://Assets/Textures/dialogue_box_green.PNG")
+	dark_trans_tex      = load("res://Assets/Textures/tile_dark_transparent.PNG")
 	
 
 

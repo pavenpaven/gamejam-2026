@@ -1,13 +1,14 @@
 extends Node2D
 
-@onready var sprite = $AnimatedSprite2D
-@onready var mes1   = $Message1
-@onready var mes2   = $Message2
-@onready var mes3   = $Message3
-@onready var mes4   = $Message4
-@onready var mes5   = $Message5
-@onready var face   = $Face
-@onready var text   = $Text
+@onready var sprite  = $AnimatedSprite2D
+@onready var mes1    = $Message1
+@onready var mes2    = $Message2
+@onready var mes3    = $Message3
+@onready var mes4    = $Message4
+@onready var mes5    = $Message5
+@onready var face    = $Face
+@onready var text    = $Text
+@onready var textbox = $Textbox
 
 
 var character_id 

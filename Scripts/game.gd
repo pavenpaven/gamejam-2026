@@ -14,6 +14,8 @@ extends Node2D
 	, $Ingredient7, $Ingredient8]
 
 
+var markers = []
+
 var can_serve = false
 var characters = []
 var challange
@@ -24,6 +26,14 @@ var round_num    = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Globals.rounds_done = 0
+	for i in range(5):
+		var sp = Sprite2D.new()
+		sp.texture = Globals.dark_trans_tex
+		sp.position = Vector2(1000,1000)
+		markers.append(sp)
+		add_child(sp)
+		
+	
 	generate_challange()
 	print_challange()
 	update_faces()
@@ -214,10 +224,14 @@ func _process(delta: float) -> void:
 		button.z_index = 0
 	else:
 		button.z_index = -1
-	
+
+	for i in markers:
+		i.position = Vector2(1000, 1000)
+		
 	for ingredient in ingredients:
 		if ingredient.grabbed:
 			ingredient.position = get_real_pos(get_viewport().get_mouse_position()) + ingredient.grab_vec
+			baby_placy(ingredient)
 
 func get_tile_pos(ingredient, pos):
 	var points = []
@@ -241,6 +255,7 @@ func get_tile_pos(ingredient, pos):
 
 func update_faces():
 	update_can_serve()
+	timer.paused = can_serve
 	for i in range(len(challange)):
 		var req = challange[i]
 		if req["type"] == 0:
@@ -250,20 +265,44 @@ func update_faces():
 			if between >= req["num"]:
 				chara.sprite.animation = "happy_" + str(chara.character_id)
 				chara.face.z_index = 1
+				chara.textbox.texture  = Globals.green_text_box_tex
 			else:
 				chara.sprite.animation = "normal_" + str(chara.character_id)
 				chara.face.z_index = -1
+				chara.textbox.texture  = Globals.text_box_tex
 			chara.mes5.texture = Globals.num_texs[between]
 		if req["type"] == 1:
 			if satisfied(req):
 				var chara = characters[i]
 				chara.sprite.animation = "happy_" + str(chara.character_id)
 				chara.face.z_index = 1
+				chara.textbox.texture  = Globals.green_text_box_tex
 			else:
 				var chara = characters[i]
 				chara.sprite.animation = "angry_" + str(chara.character_id)
 				chara.face.z_index = -1
+				chara.textbox.texture  = Globals.green_text_box_tex
 
+func baby_placy(ingredient):
+	var pos = (ingredient.position - board.position) / board.tilesz
+	if pos.x > 0 && pos.x < board.width && pos.y > 0 && pos.y < board.width:
+		var center = ingredient.centroid() 
+
+#"		var new_center = Globals.midpoint(points)
+		var points = get_tile_pos(ingredient, round(pos - center - Vector2(0.5,0.5)))
+		for i in len(points):
+			var pnt = points[i]
+			markers[i].position = pnt * 16 + board.position + Vector2(8,8)
+
+		var bad = false
+		for i in points:
+			if not (i.x >= 0 && i.y >= 0 && i.x < 6 && i.y < 6):
+				bad = true
+		if bad:
+			for i in markers:
+				i.position = Vector2(1000,1000)
+			
+				
 func drop(ingredient):
 	var pos = (ingredient.position - board.position) / board.tilesz
 	if pos.x > 0 && pos.x < board.width && pos.y > 0 && pos.y < board.width:
@@ -306,7 +345,9 @@ func get_board_pos(pos):
 
 func _input(event):
 	if event is InputEventMouseButton:
-		pass
+		if event.button_index == 1:
+			if not event.pressed:
+				buttonclick.z_index = -1
 
 func score():
 	var points = 0
@@ -321,16 +362,19 @@ func score():
 func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:	
 		if event.button_index == 1:
-			if event.pressed && can_serve: 
-				generate_challange()
-				print_challange()
-				board.reset_tiles()
-				update_faces()
-				buttonclick.z_index = 2
-				for i in ingredients:
-					i.reset()
-			else:
-				buttonclick.z_index = 0
+			if can_serve:
+				if event.pressed: 
+					buttonclick.z_index = 2
+				else:
+					generate_challange()
+					print_challange()
+					board.reset_tiles()
+					update_faces()
+					for i in ingredients:
+						i.reset()
+					buttonclick.z_index = -1
+
+
 					
 
 
