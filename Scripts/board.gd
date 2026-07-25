@@ -34,6 +34,8 @@ func _process(delta: float) -> void:
 
 func col(type):
 	if type == -1:
+		return 4
+	if type == -2:
 		return -1
 	return Globals.ingredient_color[type]
 
@@ -48,7 +50,7 @@ func update_borders(requests):
 			var col1 = req["cola"]
 			var col2 = req["colb"]
 			for i in range(width):
-				var previous = -1
+				var previous = -2
 				for j in range(height):
 					var current = tiles[j][i]
 					if ((col(current) == col1 && col(previous) == col2)
@@ -65,7 +67,7 @@ func update_borders(requests):
 					previous = current
 
 			for j in range(height):
-				var previous = -1
+				var previous = -2
 				for i in range(width):
 					var current = tiles[j][i]
 					if ((col(current) == col1 && col(previous) == col2)
@@ -86,7 +88,7 @@ func update_borders(requests):
 func border_between(col1, col2): # return the number of instances that the colors col1 and col2 neighbour
 	var lengt = 0
 	for i in range(width):
-		var previous = -1
+		var previous = -2
 		for j in range(height):
 			var current = tiles[j][i]
 			if ((col(current) == col1 && col(previous) == col2)
@@ -95,7 +97,7 @@ func border_between(col1, col2): # return the number of instances that the color
 			previous = current
 
 	for j in range(height):
-		var previous = -1
+		var previous = -2
 		for i in range(width):
 			var current = tiles[j][i]
 			if ((col(current) == col1 && col(previous) == col2)

@@ -33,7 +33,7 @@ var ingredient_structure =[
 	[[0,0],[1,0],[2,0]] ## Straight seaweed
 	]
 
-# blue 0 red 1 green 2 brown 3
+# blue 0 red 1 green 2 brown 3 air 4
 
 var ingredient_color  = [
 	3, # worm
@@ -55,7 +55,8 @@ var color_symbols_paths = [
 	"dialogue_blue.PNG",
 	"dialogue_red.PNG",
 	"dialogue_green.PNG",
-	"dialogue_brown.PNG"
+	"dialogue_brown.PNG",
+	"dialogue_empty.PNG"
 	]
 
 var num_texs = []

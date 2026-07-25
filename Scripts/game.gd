@@ -59,17 +59,14 @@ func update_can_serve():
 	mess.z_index = -1
 
 	
-
-
-
 func random_request():
 	var type = randi() % 2
 	if type == 1:
 		type = randi() % 2
 
 	if type == 0:
-		var cola = randi() % 4
-		var colb = randi() % 3
+		var cola = randi() % 5
+		var colb = randi() % 4
 		if colb >= cola: # this is to enshure that they are distinct
 			colb += 1
 		return {"type":0, "cola": cola, "colb": colb, "num": 3}
@@ -137,7 +134,7 @@ func generate_challange():
 	round_num += 1
 	
 func col_string(col):
-	return ["blue", "red", "green", "brown"][col]
+	return ["blue", "red", "green", "brown", "empty"][col]
 
 func print_challange():
 	for i in challange:
