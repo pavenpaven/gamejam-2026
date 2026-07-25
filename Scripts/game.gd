@@ -3,6 +3,7 @@ extends Node2D
 @onready var camera      = $Camera2D
 @onready var board       = $Board
 @onready var buttonclick = $Buttonclicked
+@onready var button      = $Sprite2D
 @onready var timertext   = $Timertext
 @onready var timer       = $Timer
 @onready var ingredients = [
@@ -11,9 +12,11 @@ extends Node2D
 	, $Ingredient7, $Ingredient8]
 
 
+var can_serve = false
 var characters = []
 var challange
 
+var timer_length = 60
 var NUM_REQS = 4
 
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +24,30 @@ func _ready() -> void:
 	generate_challange()
 	print_challange()
 	update_faces()
+
+func satisfied(req):
+	if req["type"] == 0:
+		return board.border_between(req["cola"], req["colb"]) > 2
+	if req["type"] == 1:
+		return board.border_between(req["cola"], req["colb"]) == 0
+	return false
 	
+	
+func update_can_serve():
+	var all_ingredients_onboard = true
+	for i in ingredients:
+		if not i.onboard:
+			all_ingredients_onboard = false
+
+	if all_ingredients_onboard:
+		var all_reqs_satisfied = true
+		for req in challange:
+			if not satisfied(req):
+				all_reqs_satisfied = false
+		can_serve = all_reqs_satisfied
+	else:
+		can_serve = false
+
 
 
 func random_request():
@@ -52,7 +78,8 @@ func incompatible(req1, req2):
 	
 	
 func generate_challange():
-	timer.start(60)
+	timer.start(timer_length)
+	timer_length = timer_length - timer_length * 0.1
 	challange = []
 	for i in characters:
 		remove_child(i)
@@ -103,6 +130,11 @@ func _process(delta: float) -> void:
 	var time_left = int(round(timer.time_left))
 	
 	timertext.text = str(time_left) + "s left"
+
+	if can_serve:
+		button.z_index = 0
+	else:
+		button.z_index = -1
 	
 	for ingredient in ingredients:
 		if ingredient.grabbed:
@@ -129,10 +161,11 @@ func get_tile_pos(ingredient, pos):
 	return out
 
 func update_faces():
+	update_can_serve()
 	for i in range(len(challange)):
 		var req = challange[i]
 		if req["type"] == 0:
-			if board.border_between(req["cola"], req["colb"]) >= 3:
+			if satisfied(req):
 				var chara = characters[i]
 				chara.sprite.animation = "happy_" + str(chara.character_id)
 				chara.face.z_index = 1
@@ -141,7 +174,7 @@ func update_faces():
 				chara.sprite.animation = "normal_" + str(chara.character_id)
 				chara.face.z_index = -1
 		if req["type"] == 1:
-			if board.border_between(req["cola"], req["colb"]) == 0:
+			if satisfied(req):
 				var chara = characters[i]
 				chara.sprite.animation = "happy_" + str(chara.character_id)
 				chara.face.z_index = 1
@@ -181,6 +214,7 @@ func grab(ingredient):
 		board.tiles[i.y][i.x] = -1
 
 	board.update_borders(challange)
+	ingredient.onboard = false
 	update_faces()
 
 func get_real_pos(pos):
@@ -206,7 +240,7 @@ func score():
 func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:	
 		if event.button_index == 1:
-			if event.pressed:
+			if event.pressed && can_serve: 
 				print("You got ", score(), " points")
 				generate_challange()
 				print_challange()

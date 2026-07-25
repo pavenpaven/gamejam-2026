@@ -53,7 +53,6 @@ func update_borders(requests):
 					var current = tiles[j][i]
 					if ((col(current) == col1 && col(previous) == col2)
 						|| (col(current) == col2 && col(previous) == col1)):
-						print("Creating sprite")
 						var sprite = Sprite2D.new()
 						borders.append(sprite)
 						if req["type"] == 0:
@@ -71,7 +70,6 @@ func update_borders(requests):
 					var current = tiles[j][i]
 					if ((col(current) == col1 && col(previous) == col2)
 						|| (col(current) == col2 && col(previous) == col1)):
-						print("Creating sprite")
 						var sprite = Sprite2D.new()
 						borders.append(sprite)
 						if req["type"] == 0:
