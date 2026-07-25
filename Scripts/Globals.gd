@@ -1,5 +1,7 @@
 extends Node
 
+var rounds_done = 0
+
 var ingredient_texs      = []
 var ingredient_back_texs = []
 

@@ -23,6 +23,7 @@ var round_num    = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Globals.rounds_done = 0
 	generate_challange()
 	print_challange()
 	update_faces()
@@ -133,7 +134,7 @@ func generate_challange():
 		timer.start(120)
 	else:
 		timer.start(timer_length)
-	timer_length = timer_length - timer_length * 0.1
+	timer_length = timer_length - timer_length * 0.05
 
 	challange = []
 	for i in characters:
@@ -167,6 +168,7 @@ func generate_challange():
 			inst.set_textbox(challange[count])
 			count += 1
 
+	Globals.rounds_done = round_num
 	round_num += 1
 
 func gen_chal():
