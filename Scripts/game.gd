@@ -70,9 +70,9 @@ func difficulty(cha):
 				diff += 4
 		if req["type"] == 1: # not neighbouring
 			if req["cola"] == 4 || req["colb"] == 4:
-				diff += 8
+				diff += 20
 			else:
-				diff += 6
+				diff += 8
 	return diff
 			
 			
@@ -129,7 +129,10 @@ func upper_diff():
 func generate_challange():
 	if round_num >= 1:
 		label.z_index = -1
-	timer.start(timer_length)
+	if round_num == 0:
+		timer.start(120)
+	else:
+		timer.start(timer_length)
 	timer_length = timer_length - timer_length * 0.1
 
 	challange = []
