@@ -7,6 +7,7 @@ extends Node2D
 @onready var timertext   = $Timertext
 @onready var timer       = $Timer
 @onready var mess        = $Mess
+@onready var label       = $Label
 @onready var ingredients = [
 	$Ingredient, $Ingredient2, $Ingredient3
 	, $Ingredient4, $Ingredient5, $Ingredient6
@@ -58,6 +59,25 @@ func update_can_serve():
 	can_serve = true
 	mess.z_index = -1
 
+func difficulty(cha):
+	var diff = 0
+
+	for req in cha:
+		if req["type"] == 0: # neighbouring
+			if req["cola"] == 4 || req["colb"] == 4:
+				diff += 3
+			else:
+				diff += 4
+		if req["type"] == 1: # not neighbouring
+			if req["cola"] == 4 || req["colb"] == 4:
+				diff += 8
+			else:
+				diff += 6
+	return diff
+			
+			
+			
+	
 	
 func random_request():
 	var type = randi() % 2
@@ -65,14 +85,26 @@ func random_request():
 		type = randi() % 2
 
 	if type == 0:
-		var cola = randi() % 5
-		var colb = randi() % 4
+		var cola
+		var colb
+		if round_num > 1:
+			cola = randi() % 5
+			colb = randi() % 4
+		else:
+			cola = randi() % 4
+			colb = randi() % 3
 		if colb >= cola: # this is to enshure that they are distinct
 			colb += 1
 		return {"type":0, "cola": cola, "colb": colb, "num": 3}
 	if type == 1:
-		var cola = randi() % 4
-		var colb = randi() % 3
+		var cola
+		var colb
+		if round_num > 5:
+			cola = randi() % 5
+			colb = randi() % 4
+		else:
+			cola = randi() % 4
+			colb = randi() % 3
 		if colb >= cola:
 			colb += 1
 		return {"type":1, "cola": cola, "colb": colb}
@@ -84,11 +116,22 @@ func incompatible(req1, req2):
 			||  (req1["cola"] == req2["colb"] && req1["colb"] == req2["cola"]))
 	print("warning missing incompatiblility check")
 	return true
-	
+
+
+func lower_diff():
+	return 1
+
+func upper_diff():
+	if round_num >= 6:
+		return 24 + 8*6
+	return [8, 15, 16, 20, 20, 24][round_num]
 	
 func generate_challange():
+	if round_num >= 1:
+		label.z_index = -1
 	timer.start(timer_length)
 	timer_length = timer_length - timer_length * 0.1
+
 	challange = []
 	for i in characters:
 		remove_child(i)
@@ -96,28 +139,18 @@ func generate_challange():
 	characters = []
 	var character_scene = preload("res://Scenes/character.tscn")
 
-	var NUM_REQS
-	if round_num == 0:
-		NUM_REQS = 2
-	if round_num == 1:
-		NUM_REQS = 3
-	if round_num > 1:
-		NUM_REQS = 4
-	
-	var count = 0
-	while count < NUM_REQS: # theres an infite loop here if you set the count bound to high
-		var req = random_request()
-		var allowed = true
-		for j in challange:
-			if incompatible(req, j):
-				allowed = false
-				
-		if allowed:
-			challange.append(req)
-			count += 1
+	var chal = []
+	var diff = difficulty(chal)
 
-	count = 0
-	while count < NUM_REQS:
+	while not (diff > lower_diff() && diff <= upper_diff()):
+		chal = gen_chal()
+		diff = difficulty(chal)
+
+	challange = chal
+	
+
+	var count = 0
+	while count < len(challange):
 		var char_id = randi() % 8
 		var unique = true
 		for i in characters:
@@ -132,6 +165,29 @@ func generate_challange():
 			count += 1
 
 	round_num += 1
+
+func gen_chal():
+	var chal = []
+	var NUM_REQS
+	if round_num >= 4:
+		NUM_REQS = 4
+	else:
+		NUM_REQS = [2, 3, 3, 3][round_num]
+	
+	
+	var count = 0
+	while count < NUM_REQS: # theres an infite loop here if you set the count bound to high
+		var req = random_request()
+		var allowed = true
+		for j in chal:
+			if incompatible(req, j):
+				allowed = false
+				
+		if allowed:
+			chal.append(req)
+			count += 1
+	return chal
+	
 	
 func col_string(col):
 	return ["blue", "red", "green", "brown", "empty"][col]
