@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d8hf2p75ty37" path="res://Scenes/ingredient.tscn" id="3_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://dwapdu4mwwkls" path="res://Assets/Textures/button_serve.PNG" id="4_3dryh"]
 [ext_resource type="AudioStream" uid="uid://n3373wpjck3o" path="res://Assets/Sounds/fish_pizza_music.mp3" id="5_wowpa"]
+[ext_resource type="FontFile" uid="uid://bnsaqjw4tdtu3" path="res://Assets/m3x6.ttf" id="9_h4fw4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v158k"]
 atlas = ExtResource("2_1l0tm")
@@ -33,6 +34,11 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ev0h"]
 size = Vector2(60, 27)
+
+[sub_resource type="FontVariation" id="FontVariation_lcbng"]
+base_font = ExtResource("9_h4fw4")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ev0h"]
 
 [node name="Game" type="Node2D" unique_id=1385651455]
 script = ExtResource("1_ebmjs")
@@ -118,5 +124,16 @@ stream = ExtResource("5_wowpa")
 volume_db = -9.123
 autoplay = true
 parameters/looping = true
+
+[node name="Timer" type="Timer" parent="." unique_id=704487286]
+
+[node name="timertext" type="Label" parent="." unique_id=802498468]
+offset_left = -169.0
+offset_top = 85.0
+offset_right = -17.0
+offset_bottom = 108.0
+theme_override_fonts/font = SubResource("FontVariation_lcbng")
+text = "Allah suriya hamiya"
+label_settings = SubResource("LabelSettings_4ev0h")
 
 [connection signal="input_event" from="Area2D" to="." method="_button_event"]

@@ -4,6 +4,7 @@ extends Node2D
 @onready var mes1   = $Message1
 @onready var mes2   = $Message2
 @onready var mes3   = $Message3
+@onready var face   = $Face
 
 
 var character_id 

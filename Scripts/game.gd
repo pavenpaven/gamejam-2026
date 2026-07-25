@@ -3,6 +3,7 @@ extends Node2D
 @onready var camera      = $Camera2D
 @onready var board       = $Board
 @onready var buttonclick = $Buttonclicked
+@onready var timertext   = $timertext
 @onready var ingredients = [
 	$Ingredient, $Ingredient2, $Ingredient3
 	, $Ingredient4, $Ingredient5, $Ingredient6
@@ -18,12 +19,14 @@ var NUM_REQS = 4
 func _ready() -> void:
 	generate_challange()
 	print_challange()
+	update_faces()
 
 
 func random_request():
 	var type = randi() % 2
 	if type == 1:
 		type = randi() % 2
+
 	if type == 0:
 		var cola = randi() % 4
 		var colb = randi() % 3
@@ -125,16 +128,20 @@ func update_faces():
 			if board.border_between(req["cola"], req["colb"]) >= 3:
 				var chara = characters[i]
 				chara.sprite.animation = "happy_" + str(chara.character_id)
+				chara.face.z_index = 1
 			else:
 				var chara = characters[i]
 				chara.sprite.animation = "normal_" + str(chara.character_id)
+				chara.face.z_index = -1
 		if req["type"] == 1:
 			if board.border_between(req["cola"], req["colb"]) == 0:
 				var chara = characters[i]
-				chara.sprite.animation = "normal_" + str(chara.character_id)
+				chara.sprite.animation = "happy_" + str(chara.character_id)
+				chara.face.z_index = 1
 			else:
 				var chara = characters[i]
 				chara.sprite.animation = "angry_" + str(chara.character_id)
+				chara.face.z_index = -1
 
 func drop(ingredient):
 	var pos = (ingredient.position - board.position) / board.tilesz
@@ -197,6 +204,7 @@ func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				generate_challange()
 				print_challange()
 				board.reset_tiles()
+				update_faces()
 				buttonclick.z_index = 2
 				for i in ingredients:
 					i.reset()
