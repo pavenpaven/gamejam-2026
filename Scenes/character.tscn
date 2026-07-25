@@ -502,3 +502,7 @@ texture = ExtResource("11_le1tg")
 [node name="Face" type="Sprite2D" parent="." unique_id=1100801425]
 position = Vector2(58, -30)
 texture = ExtResource("12_l1rcp")
+
+[node name="Message5" type="Sprite2D" parent="." unique_id=235162677]
+position = Vector2(45, -51)
+texture = ExtResource("11_le1tg")

@@ -39,13 +39,13 @@ size = Vector2(60, 27)
 [node name="Game" type="Node2D" unique_id=1385651455]
 script = ExtResource("1_ebmjs")
 
-[node name="Buttonclicked" type="Sprite2D" parent="." unique_id=1773152416]
-position = Vector2(-101, 34)
-texture = ExtResource("2_v158k")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=429753201]
 sprite_frames = SubResource("SpriteFrames_lcbng")
 autoplay = "default"
+
+[node name="Buttonclicked" type="Sprite2D" parent="." unique_id=1773152416]
+position = Vector2(-131, 17)
+texture = ExtResource("2_v158k")
 
 [node name="table3" type="Sprite2D" parent="." unique_id=159096589]
 position = Vector2(-205, 17)
@@ -106,13 +106,13 @@ position = Vector2(88, 5)
 type = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1826442636]
-position = Vector2(-101, 34)
+position = Vector2(-131, 17)
 texture = ExtResource("4_3dryh")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1988183933]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=788803187]
-position = Vector2(-102, 35)
+position = Vector2(-132, 17)
 shape = SubResource("RectangleShape2D_4ev0h")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1217599994]
@@ -128,13 +128,25 @@ position = Vector2(-130, 80)
 texture = ExtResource("9_ldgsr")
 
 [node name="Timertext" type="Label" parent="." unique_id=1081582067]
-offset_left = -171.0
-offset_top = 61.0
-offset_right = -78.0
-offset_bottom = 93.0
+offset_left = -150.0
+offset_top = 48.0
+offset_right = -57.0
+offset_bottom = 99.0
 theme_override_colors/font_color = Color(1, 0.17254902, 0.23921569, 1)
 theme_override_fonts/font = ExtResource("9_h4fw4")
-theme_override_font_sizes/font_size = 37
+theme_override_font_sizes/font_size = 64
 text = "nd"
 
+[node name="Mess" type="Label" parent="." unique_id=995150501]
+offset_left = -197.0
+offset_top = -7.0
+offset_right = -75.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("9_h4fw4")
+theme_override_font_sizes/font_size = 32
+text = "You are mr gay"
+
 [connection signal="input_event" from="Area2D" to="." method="_button_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

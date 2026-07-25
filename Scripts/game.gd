@@ -6,6 +6,7 @@ extends Node2D
 @onready var button      = $Sprite2D
 @onready var timertext   = $Timertext
 @onready var timer       = $Timer
+@onready var mess        = $Mess
 @onready var ingredients = [
 	$Ingredient, $Ingredient2, $Ingredient3
 	, $Ingredient4, $Ingredient5, $Ingredient6
@@ -16,7 +17,7 @@ var can_serve = false
 var characters = []
 var challange
 
-var timer_length = 60
+var timer_length = 6
 var round_num    = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -27,7 +28,7 @@ func _ready() -> void:
 
 func satisfied(req):
 	if req["type"] == 0:
-		return board.border_between(req["cola"], req["colb"]) > 2
+		return board.border_between(req["cola"], req["colb"]) >= req["num"]
 	if req["type"] == 1:
 		return board.border_between(req["cola"], req["colb"]) == 0
 	return false
@@ -39,14 +40,25 @@ func update_can_serve():
 		if not i.onboard:
 			all_ingredients_onboard = false
 
-	if all_ingredients_onboard:
-		var all_reqs_satisfied = true
-		for req in challange:
-			if not satisfied(req):
-				all_reqs_satisfied = false
-		can_serve = all_reqs_satisfied
-	else:
+	var all_reqs_satisfied = true
+
+	for req in challange:
+		if not satisfied(req):
+			all_reqs_satisfied = false
+	if not all_reqs_satisfied:
+		mess.text = "Not all requests \nsatisfied"
+		mess.z_index = 0
 		can_serve = false
+		return
+	if not all_ingredients_onboard:
+		mess.text = "Not all \ningredients used"
+		mess.z_index = 0
+		can_serve = false
+		return
+	can_serve = true
+	mess.z_index = -1
+
+	
 
 
 
@@ -138,7 +150,7 @@ func print_challange():
 func _process(delta: float) -> void:
 	var time_left = int(round(timer.time_left))
 	
-	timertext.text = str(time_left) + "s left"
+	timertext.text = str(time_left) + "s"
 
 	if can_serve:
 		button.z_index = 0
@@ -174,14 +186,16 @@ func update_faces():
 	for i in range(len(challange)):
 		var req = challange[i]
 		if req["type"] == 0:
-			if satisfied(req):
-				var chara = characters[i]
+			var between = board.border_between(req["cola"], req["colb"])
+			between = min(req["num"], between)
+			var chara  = characters[i]
+			if between >= req["num"]:
 				chara.sprite.animation = "happy_" + str(chara.character_id)
 				chara.face.z_index = 1
 			else:
-				var chara = characters[i]
 				chara.sprite.animation = "normal_" + str(chara.character_id)
 				chara.face.z_index = -1
+			chara.mes5.texture = Globals.num_texs[between]
 		if req["type"] == 1:
 			if satisfied(req):
 				var chara = characters[i]
@@ -263,4 +277,5 @@ func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 
 
 func _on_timer_timeout() -> void:
-	print("dead")
+	print("change")
+	get_tree().change_scene_to_file("res://Scenes/gameover.tscn")

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://714bx4v76gok"]
+
+[ext_resource type="Script" uid="uid://c5p3xlpldamfe" path="res://Scripts/gameover.gd" id="1_bb3cs"]
+[ext_resource type="Texture2D" uid="uid://itwv4aymht1f" path="res://Assets/Textures/background_sea_sprite_sheet.PNG" id="2_opou1"]
+[ext_resource type="Texture2D" uid="uid://c6h28xinkfnwr" path="res://Assets/Textures/texture_gameover.PNG" id="4_a57xw"]
+[ext_resource type="Texture2D" uid="uid://7qviljphvfs4" path="res://Assets/Textures/fish_resturant_table.png" id="4_rdsaq"]
+[ext_resource type="Texture2D" uid="uid://c8sqva83luw0c" path="res://Assets/Textures/button_restart.PNG" id="5_qjy16"]
+[ext_resource type="Texture2D" uid="uid://bkjoafjfdi2le" path="res://Assets/Textures/butten_restart_pushed.PNG" id="6_26hfm"]
+[ext_resource type="AudioStream" uid="uid://dmr56fex4n0jx" path="res://Assets/Sounds/quiet_pizza_music.mp3" id="7_a57xw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v158k"]
+atlas = ExtResource("2_opou1")
+region = Rect2(0, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4fw4"]
+atlas = ExtResource("2_opou1")
+region = Rect2(384, 0, 384, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lcbng"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v158k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4fw4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lcbng"]
+size = Vector2(63, 31)
+
+[node name="Game" type="Node2D" unique_id=1385651455]
+script = ExtResource("1_bb3cs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=429753201]
+sprite_frames = SubResource("SpriteFrames_lcbng")
+autoplay = "default"
+
+[node name="table3" type="Sprite2D" parent="." unique_id=159096589]
+position = Vector2(-205, 17)
+rotation = 1.5707964
+texture = ExtResource("4_rdsaq")
+
+[node name="table2" type="Sprite2D" parent="." unique_id=162145225]
+position = Vector2(202, 25)
+rotation = -1.5707964
+texture = ExtResource("4_rdsaq")
+
+[node name="table" type="Sprite2D" parent="." unique_id=297293345]
+position = Vector2(0.5000019, -4)
+scale = Vector2(1.1119791, 1)
+texture = ExtResource("4_rdsaq")
+
+[node name="table4" type="Sprite2D" parent="." unique_id=1413958192]
+position = Vector2(-2, -142)
+rotation = 3.1415927
+texture = ExtResource("4_rdsaq")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=703375740]
+offset = Vector2(0, -12)
+zoom = Vector2(2.7, 2.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1943408077]
+position = Vector2(17, -10)
+texture = ExtResource("4_a57xw")
+
+[node name="Button" type="Sprite2D" parent="." unique_id=1740355626]
+position = Vector2(-1, 48)
+texture = ExtResource("5_qjy16")
+
+[node name="Buttonpressed" type="Sprite2D" parent="." unique_id=1675952688]
+z_index = -1
+position = Vector2(-1, 48)
+texture = ExtResource("6_26hfm")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2078520164]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1292235645]
+position = Vector2(-0.5, 47.5)
+shape = SubResource("RectangleShape2D_lcbng")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1428600700]
+stream = ExtResource("7_a57xw")
+autoplay = true
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
