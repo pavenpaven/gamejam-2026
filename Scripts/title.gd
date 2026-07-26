@@ -42,6 +42,7 @@ func _ready() -> void:
 	soundslider.value = db_to_linear(AudioServer.get_bus_volume_db(bus))
 
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

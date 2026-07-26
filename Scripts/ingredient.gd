@@ -58,6 +58,11 @@ func _process(delta: float) -> void:
 	else:
 		sprite.texture = Globals.ingredient_back_texs[type]
 
+func rotat():
+	rot += 1
+	rot = rot % 4
+	rotation += PI/2
+		
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
@@ -66,11 +71,13 @@ func _input(event):
 					get_parent().drop(self)
 				grabbed = false
 				z_index = 0
+		if event.button_index == 2 && event.pressed:
+			if grabbed:
+				rotat()
 				
 
 	if event is InputEventKey:
 		if grabbed:
-			if event.keycode == KEY_R && event.pressed && not event.echo:
-				rot += 1
-				rot = rot % 4
-				rotation += PI/2
+			var is_rot_key = (event.keycode == KEY_R || event.keycode == KEY_SPACE)
+			if is_rot_key && event.pressed && not event.echo:
+				rotat()
