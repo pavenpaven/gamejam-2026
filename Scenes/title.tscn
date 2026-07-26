@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://d07hariddrnco"]
+
+[ext_resource type="Texture2D" uid="uid://c68e2cuaxkt8y" path="res://Assets/Textures/title_screen_side.PNG" id="1_ekrfg"]
+[ext_resource type="Texture2D" uid="uid://dtw26v1y1e1f3" path="res://Assets/Textures/fish_pizza_game_cover_image_itch.jpg" id="2_fp2oq"]
+[ext_resource type="Texture2D" uid="uid://bvinkv7ogxj7h" path="res://Assets/Textures/texture_tutorial.PNG" id="3_fp2oq"]
+[ext_resource type="FontFile" uid="uid://bnsaqjw4tdtu3" path="res://Assets/m3x6.ttf" id="4_yosvi"]
+[ext_resource type="Texture2D" uid="uid://cwyje6f0nr8i0" path="res://Assets/Textures/texture_gear_wheel.PNG" id="5_2qdx2"]
+
+[node name="Node2D" type="Node2D" unique_id=2131242177]
+
+[node name="side" type="Sprite2D" parent="." unique_id=692830684]
+position = Vector2(7, 323)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_ekrfg")
+
+[node name="drawing" type="Sprite2D" parent="." unique_id=271880655]
+position = Vector2(740, 326)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("2_fp2oq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=327219755]
+position = Vector2(750, 692)
+scale = Vector2(3, 3)
+texture = ExtResource("3_fp2oq")
+
+[node name="start" type="Label" parent="." unique_id=1709074842]
+offset_left = 39.0
+offset_top = 123.0
+offset_right = 359.0
+offset_bottom = 326.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_yosvi")
+theme_override_font_sizes/font_size = 200
+text = "START"
+
+[node name="quit" type="Label" parent="." unique_id=873513729]
+offset_left = 39.0
+offset_top = 251.0
+offset_right = 359.0
+offset_bottom = 454.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("4_yosvi")
+theme_override_font_sizes/font_size = 200
+text = "QUIT"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=274445626]
+position = Vector2(-163, -159)
+texture = ExtResource("5_2qdx2")
