@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d07hariddrnco"]
 
+[ext_resource type="Script" uid="uid://cxd8iqmku12e1" path="res://Scripts/title.gd" id="1_2qdx2"]
 [ext_resource type="Texture2D" uid="uid://c68e2cuaxkt8y" path="res://Assets/Textures/title_screen_side.PNG" id="1_ekrfg"]
 [ext_resource type="Texture2D" uid="uid://dtw26v1y1e1f3" path="res://Assets/Textures/fish_pizza_game_cover_image_itch.jpg" id="2_fp2oq"]
 [ext_resource type="Texture2D" uid="uid://bvinkv7ogxj7h" path="res://Assets/Textures/texture_tutorial.PNG" id="3_fp2oq"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cwyje6f0nr8i0" path="res://Assets/Textures/texture_gear_wheel.PNG" id="5_2qdx2"]
 
 [node name="Node2D" type="Node2D" unique_id=2131242177]
+script = ExtResource("1_2qdx2")
 
 [node name="side" type="Sprite2D" parent="." unique_id=692830684]
 position = Vector2(7, 323)
