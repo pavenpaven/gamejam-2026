@@ -1,5 +1,6 @@
 extends Node
 
+@onready var sfx          = $sfx
 @onready var trans1       = $Transparent        
 @onready var trans2       = $Transparent2       
 @onready var creditstitle = $creditstitle 
@@ -123,24 +124,30 @@ func _input(event):
 
 func _on_start_down() -> void:
 	dw_start.z_index = 1
+	sfx.play()
 
 func _on_exit_down() -> void:
 	dw_quit.z_index = 1
+	sfx.play()
 
 func _on_credits_down() -> void:
 	dw_credits.z_index = 1
+	sfx.play()
 
 func _on_settings_down() -> void:
 	dw_gear.z_index = 1
+	sfx.play()
 
 
 func _on_normal_down() -> void:
 	if settings_up:
 		Globals.casual_mode = false
 		fix_casual()
+		sfx.play()
 
 
 func _on_casual_down() -> void:
 	if settings_up:
 		Globals.casual_mode = true
 		fix_casual()
+		sfx.play()

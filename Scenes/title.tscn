@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://vfwmiby46yxh" path="res://Assets/Textures/button_casual_mode.PNG" id="16_wkj73"]
 [ext_resource type="Texture2D" uid="uid://csye63nou727x" path="res://Assets/Textures/texture_arrow.PNG" id="18_8fpq2"]
 [ext_resource type="AudioStream" uid="uid://dmr56fex4n0jx" path="res://Assets/Sounds/quiet_pizza_music.mp3" id="20_8fpq2"]
+[ext_resource type="AudioStream" uid="uid://byv8lj68o5my5" path="res://Assets/Sounds/sfx_pick_up_ingredient.mp3" id="21_yrftc"]
 
 [node name="title" type="Node2D" unique_id=358625241]
 script = ExtResource("5_2qdx2")
@@ -196,11 +197,15 @@ offset_top = 269.0
 offset_right = 1049.0
 offset_bottom = 351.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=379187064]
+[node name="background" type="AudioStreamPlayer" parent="." unique_id=379187064]
 stream = ExtResource("20_8fpq2")
 volume_db = -1.825
 autoplay = true
 parameters/looping = true
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="." unique_id=1190113337]
+stream = ExtResource("21_yrftc")
+volume_db = -3.402
 
 [connection signal="button_down" from="Button" to="." method="_on_start_down"]
 [connection signal="pressed" from="Button" to="." method="_on_start_pressed"]
