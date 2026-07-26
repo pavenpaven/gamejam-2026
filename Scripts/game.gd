@@ -8,6 +8,9 @@ extends Node2D
 @onready var timer       = $Timer
 @onready var mess        = $Mess
 @onready var label       = $Label
+@onready var continu     = $Continue
+@onready var pressedcont = $Continuepressed
+@onready var cont        = $Label2
 @onready var ingredients = [
 	$Ingredient, $Ingredient2, $Ingredient3
 	, $Ingredient4, $Ingredient5, $Ingredient6
@@ -20,13 +23,13 @@ var can_serve = false
 var characters = []
 var challange
 
+var lost = false
+
 var timer_length = 60
 var round_num    = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if Globals.casual_mode:
-		timer_length = 300
 	Globals.rounds_done = 0
 	for i in range(5):
 		var sp = Sprite2D.new()
@@ -89,9 +92,6 @@ func difficulty(cha):
 	return diff
 			
 			
-			
-	
-	
 func random_request():
 	var type = randi() % 2
 	if type == 1:
@@ -239,10 +239,19 @@ func _process(delta: float) -> void:
 	
 	timertext.text = str(time_left) + "s"
 
+	if lost:
+		label.z_index = -1
+		mess.z_index  = -1
+		can_serve = false
+		button.z_index = -1
+		continu.z_index = 1
+		cont.z_index = 1
+	
 	if can_serve:
 		button.z_index = 0
 	else:
 		button.z_index = -1
+
 
 	for i in markers:
 		i.position = Vector2(1000, 1000)
@@ -301,6 +310,9 @@ func update_faces():
 				chara.sprite.animation = "angry_" + str(chara.character_id)
 				chara.face.z_index = -1
 				chara.textbox.texture  = Globals.text_box_tex
+		if lost:
+			var chara = characters[i]
+			chara.sprite.animation = "angry_" + str(chara.character_id)
 
 func baby_placy(ingredient):
 	var pos = (ingredient.position - board.position) / board.tilesz
@@ -367,6 +379,7 @@ func _input(event):
 		if event.button_index == 1:
 			if not event.pressed:
 				buttonclick.z_index = -1
+				pressedcont.z_index = -1
 
 func score():
 	var points = 0
@@ -381,6 +394,11 @@ func score():
 func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:	
 		if event.button_index == 1:
+			if lost:
+				if event.pressed:
+					pressedcont.z_index = 1
+				else:
+					get_tree().change_scene_to_file("res://Scenes/gameover.tscn")
 			if can_serve:
 				if event.pressed: 
 					buttonclick.z_index = 2
@@ -392,14 +410,19 @@ func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 					for i in ingredients:
 						i.reset()
 					buttonclick.z_index = -1
+			
 
 
 					
-
-
 func _on_timer_timeout() -> void:
-	print("change")
-	get_tree().change_scene_to_file("res://Scenes/gameover.tscn")
+	label.z_index = -1
+	mess.z_index  = -1
+	lost = true
+	$AudioStreamPlayer.stop()
+	$Sadmusic.play()
+	update_faces()
+	
+	#get_tree().change_scene_to_file("res://Scenes/gameover.tscn")
 
 
 func _on_exit_down() -> void:
