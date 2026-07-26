@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://n3373wpjck3o" path="res://Assets/Sounds/fish_pizza_music.mp3" id="5_wowpa"]
 [ext_resource type="FontFile" uid="uid://bnsaqjw4tdtu3" path="res://Assets/m3x6.ttf" id="9_h4fw4"]
 [ext_resource type="Texture2D" uid="uid://c3ipo5sdcjju4" path="res://Assets/Textures/texture_clock.PNG" id="9_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://bq1r1xr5rkt2q" path="res://Assets/Textures/button_x.PNG" id="11_o5yvi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v158k"]
 atlas = ExtResource("2_1l0tm")
@@ -83,7 +84,7 @@ position = Vector2(136, 40)
 type = 2
 
 [node name="Ingredient3" parent="." unique_id=1917520847 instance=ExtResource("3_wrm1d")]
-position = Vector2(135, 6)
+position = Vector2(138, 6)
 
 [node name="Ingredient4" parent="." unique_id=1005182173 instance=ExtResource("3_wrm1d")]
 position = Vector2(180, 41)
@@ -160,5 +161,17 @@ theme_override_font_sizes/font_size = 32
 text = "PRESS R TO ROTATE"
 metadata/_edit_group_ = true
 
+[node name="Button" type="Button" parent="." unique_id=1103860042]
+z_index = -1
+offset_left = -213.0
+offset_top = 86.0
+offset_right = -191.0
+offset_bottom = 108.0
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1292921450]
+position = Vector2(-197, 92)
+texture = ExtResource("11_o5yvi")
+
 [connection signal="input_event" from="Area2D" to="." method="_button_event"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="Button" to="." method="_on_exit_down"]

@@ -27,7 +27,6 @@ var round_num    = 0
 func _ready() -> void:
 	if Globals.casual_mode:
 		timer_length = 300
-
 	Globals.rounds_done = 0
 	for i in range(5):
 		var sp = Sprite2D.new()
@@ -145,7 +144,7 @@ func illegal_chal(chal):
 
 
 func lower_diff():
-	return 20 - 20*exp(-round_num / 5)
+	return 30 - 30*exp(-round_num / 5)
 
 func upper_diff():
 	if round_num >= 6:
@@ -401,3 +400,7 @@ func _button_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func _on_timer_timeout() -> void:
 	print("change")
 	get_tree().change_scene_to_file("res://Scenes/gameover.tscn")
+
+
+func _on_exit_down() -> void:
+	get_tree().change_scene_to_file("res://Scenes/title.tscn")
