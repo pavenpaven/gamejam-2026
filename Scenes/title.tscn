@@ -26,6 +26,10 @@
 [node name="title" type="Node2D" unique_id=358625241]
 script = ExtResource("5_2qdx2")
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=818936521]
+position = Vector2(665, 496)
+offset = Vector2(-86, -170)
+
 [node name="side" type="Sprite2D" parent="." unique_id=960287751]
 position = Vector2(174.99998, 315.99997)
 scale = Vector2(1.1, 1.1)
