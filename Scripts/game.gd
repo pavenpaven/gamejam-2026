@@ -128,13 +128,25 @@ func incompatible(req1, req2):
 	print("warning missing incompatiblility check")
 	return true
 
+func illegal_chal(chal):
+	var num_eq_neg = 0
+	for i in chal:
+		if i["type"] == 1:
+			if i["cola"] == 4 || i["colb"] == 4:
+				num_eq_neg += 2
+			else:
+				num_eq_neg += 1
+	if num_eq_neg > 4:
+		return true
+	return false
+
 
 func lower_diff():
-	return 1
+	return 20 - 20*exp(-round_num / 5)
 
 func upper_diff():
 	if round_num >= 6:
-		return 24 + 8*6
+		return 24 + 8*round_num
 	return [8, 15, 16, 20, 20, 24][round_num]
 	
 func generate_challange():
@@ -154,11 +166,13 @@ func generate_challange():
 	var character_scene = preload("res://Scenes/character.tscn")
 
 	var chal = []
-	var diff = difficulty(chal)
+	var diff = -1
 
 	while not (diff > lower_diff() && diff <= upper_diff()):
 		chal = gen_chal()
 		diff = difficulty(chal)
+		if illegal_chal(chal): # skip illegal challanges
+			diff = -1
 
 	challange = chal
 	
@@ -178,9 +192,10 @@ func generate_challange():
 			inst.set_textbox(challange[count])
 			count += 1
 
-	Globals.rounds_done = round_num
+	Globals.rounds_done = round_num + 1
 	round_num += 1
-
+	
+	
 func gen_chal():
 	var chal = []
 	var NUM_REQS
