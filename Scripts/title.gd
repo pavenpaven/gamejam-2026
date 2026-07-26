@@ -26,8 +26,12 @@ extends Node
 @onready var normal_arrow = $Normalarrow
 @onready var casual_arrow = $Casualarrow
 
+@onready var soundslider   = $Soundslider
+@onready var speakersprite = $Speakersprite
+
 @onready var casualexp    = $Casualexplanation
 
+@onready var bus = AudioServer.get_bus_index("Master")
 
 var credits_up  = false
 var settings_up = false
@@ -35,11 +39,8 @@ var settings_up = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	trans1
-	trans2
-	creditstitle
-	credits
-	print(trans1)
+	soundslider.value = db_to_linear(AudioServer.get_bus_volume_db(bus))
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -84,6 +85,9 @@ func reset_layout():
 	credits.z_index      = -1
 	casualexp.z_index = -1
 
+	soundslider.z_index    = -1
+	speakersprite.z_index = -1
+
 	
 
 
@@ -103,6 +107,9 @@ func _on_settings_pressed() -> void:
 		up_casual.z_index = 0
 		dw_casual.z_index = 0
 		casualexp.z_index = 0
+		soundslider.z_index = 0
+		speakersprite.z_index = 0
+		
 		fix_casual()
 
 func _on_credits_pressed() -> void:
@@ -156,3 +163,7 @@ func _on_casual_down() -> void:
 		Globals.casual_mode = true
 		fix_casual()
 		sfx.play()
+
+
+func _on_soundslider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(bus, linear_to_db(value))

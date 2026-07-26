@@ -301,7 +301,7 @@ func update_faces():
 				var chara = characters[i]
 				chara.sprite.animation = "angry_" + str(chara.character_id)
 				chara.face.z_index = -1
-				chara.textbox.texture  = Globals.green_text_box_tex
+				chara.textbox.texture  = Globals.text_box_tex
 
 func baby_placy(ingredient):
 	var pos = (ingredient.position - board.position) / board.tilesz

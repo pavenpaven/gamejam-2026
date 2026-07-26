@@ -21,12 +21,13 @@
 [ext_resource type="Texture2D" uid="uid://csye63nou727x" path="res://Assets/Textures/texture_arrow.PNG" id="18_8fpq2"]
 [ext_resource type="AudioStream" uid="uid://dmr56fex4n0jx" path="res://Assets/Sounds/quiet_pizza_music.mp3" id="20_8fpq2"]
 [ext_resource type="AudioStream" uid="uid://byv8lj68o5my5" path="res://Assets/Sounds/sfx_pick_up_ingredient.mp3" id="21_yrftc"]
+[ext_resource type="Texture2D" uid="uid://cwryk2vivjo1l" path="res://Assets/Textures/texture_sound_on.PNG" id="22_v636t"]
 
 [node name="title" type="Node2D" unique_id=358625241]
 script = ExtResource("5_2qdx2")
 
 [node name="side" type="Sprite2D" parent="." unique_id=960287751]
-position = Vector2(147, 305)
+position = Vector2(174.99998, 315.99997)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("1_xelri")
 
@@ -209,15 +210,28 @@ volume_db = -3.402
 
 [node name="Casualexplanation" type="Label" parent="." unique_id=2127698544]
 z_index = -1
-offset_left = 470.0
-offset_top = 377.0
-offset_right = 1382.0
-offset_bottom = 584.0
+offset_left = 366.0
+offset_top = 361.0
+offset_right = 1278.0
+offset_bottom = 568.0
 theme_override_colors/font_color = Color(0.12156863, 0.42745098, 0.9254902, 1)
 theme_override_fonts/font = ExtResource("3_7emq5")
 theme_override_font_sizes/font_size = 64
-text = "Casual mode sets the 
-countdown to constant 2 min"
+text = "Casual mode sets timer to constant 2 min"
+
+[node name="Soundslider" type="HSlider" parent="." unique_id=1958135258]
+z_index = -1
+offset_left = 665.0
+offset_top = 496.0
+offset_right = 995.0
+offset_bottom = 512.0
+max_value = 2.0
+step = 0.01
+
+[node name="Speakersprite" type="Sprite2D" parent="." unique_id=1364692170]
+z_index = -1
+position = Vector2(247, 403)
+texture = ExtResource("22_v636t")
 
 [connection signal="button_down" from="Button" to="." method="_on_start_down"]
 [connection signal="pressed" from="Button" to="." method="_on_start_pressed"]
@@ -230,3 +244,4 @@ countdown to constant 2 min"
 [connection signal="pressed" from="Button4" to="." method="_on_credits_pressed"]
 [connection signal="button_down" from="Button5" to="." method="_on_normal_down"]
 [connection signal="button_down" from="Button6" to="." method="_on_casual_down"]
+[connection signal="value_changed" from="Soundslider" to="." method="_on_soundslider_value_changed"]
