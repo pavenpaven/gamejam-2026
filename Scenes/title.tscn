@@ -6,12 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://cwyje6f0nr8i0" path="res://Assets/Textures/texture_gear_wheel.PNG" id="4_803yc"]
 [ext_resource type="Texture2D" uid="uid://ogvjq2rqcccg" path="res://Assets/Textures/texture_transparent.PNG" id="5_1wbrc"]
 [ext_resource type="Script" uid="uid://dym143ee0l2ka" path="res://Scripts/title.gd" id="5_2qdx2"]
+[ext_resource type="Texture2D" uid="uid://dw2hgds00hgjv" path="res://Assets/Textures/button_credits.PNG" id="6_yu0ss"]
+[ext_resource type="Texture2D" uid="uid://bvinkv7ogxj7h" path="res://Assets/Textures/texture_tutorial.PNG" id="7_3eqdi"]
+[ext_resource type="Texture2D" uid="uid://0eeb1b7h543g" path="res://Assets/Textures/button_credits_pushed.PNG" id="8_6aagf"]
+[ext_resource type="Texture2D" uid="uid://cu4riofax8uab" path="res://Assets/Textures/button_start.PNG" id="10_kyk5u"]
 
-[node name="credits" type="Node2D" unique_id=358625241]
+[node name="title" type="Node2D" unique_id=358625241]
 script = ExtResource("5_2qdx2")
 
 [node name="side" type="Sprite2D" parent="." unique_id=960287751]
-position = Vector2(7, 323)
+position = Vector2(13, 321)
 scale = Vector2(1.1, 1.1)
 texture = ExtResource("1_xelri")
 
@@ -66,9 +70,9 @@ offset_right = 141.0
 offset_bottom = 137.0
 
 [node name="Button4" type="Button" parent="." unique_id=1545865788]
-offset_left = 39.0
-offset_top = 437.0
-offset_right = 266.0
+offset_left = 43.0
+offset_top = 453.0
+offset_right = 234.0
 offset_bottom = 533.0
 
 [node name="Transparent" type="Sprite2D" parent="." unique_id=1546311634]
@@ -79,7 +83,7 @@ texture = ExtResource("5_1wbrc")
 
 [node name="Transparent2" type="Sprite2D" parent="." unique_id=880149282]
 z_index = -1
-position = Vector2(743.00006, 320)
+position = Vector2(712, 320)
 scale = Vector2(1.1275362, 0.8516229)
 texture = ExtResource("5_1wbrc")
 
@@ -111,6 +115,23 @@ Mattias Burman (pavenpaven), glassfishthing,
 vadskaalfredhete
 Sound design- glassfishthing
 Font from Daniel Linssen (itch.io)"
+
+[node name="Keybinds" type="Sprite2D" parent="." unique_id=810508981]
+position = Vector2(765, 661)
+scale = Vector2(3, 3)
+texture = ExtResource("7_3eqdi")
+
+[node name="Pushedcredits" type="Sprite2D" parent="." unique_id=127036760]
+position = Vector2(-44, 682)
+texture = ExtResource("8_6aagf")
+
+[node name="Creditsbuttonsprite" type="Sprite2D" parent="." unique_id=1396722994]
+position = Vector2(-44, 683)
+texture = ExtResource("6_yu0ss")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=704669176]
+position = Vector2(-28, 408)
+texture = ExtResource("10_kyk5u")
 
 [connection signal="pressed" from="Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_start_pressed"]
