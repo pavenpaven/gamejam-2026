@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://dv523esmnabwi"]
+
+[ext_resource type="Texture2D" uid="uid://c68e2cuaxkt8y" path="res://Assets/Textures/title_screen_side.PNG" id="1_j2dne"]
+[ext_resource type="Texture2D" uid="uid://dtw26v1y1e1f3" path="res://Assets/Textures/fish_pizza_game_cover_image_itch.jpg" id="2_6kysc"]
+[ext_resource type="FontFile" uid="uid://bnsaqjw4tdtu3" path="res://Assets/m3x6.ttf" id="3_6vr2p"]
+[ext_resource type="Texture2D" uid="uid://cwyje6f0nr8i0" path="res://Assets/Textures/texture_gear_wheel.PNG" id="4_f60ng"]
+[ext_resource type="Texture2D" uid="uid://ogvjq2rqcccg" path="res://Assets/Textures/texture_transparent.PNG" id="5_bismi"]
+
+[node name="settings" type="Node2D" unique_id=118954504]
+
+[node name="side" type="Sprite2D" parent="." unique_id=692457777]
+position = Vector2(7, 323)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_j2dne")
+
+[node name="drawing" type="Sprite2D" parent="." unique_id=984100434]
+position = Vector2(740, 326)
+scale = Vector2(0.66, 0.66)
+texture = ExtResource("2_6kysc")
+
+[node name="start" type="Label" parent="." unique_id=1400734805]
+offset_left = 39.0
+offset_top = 123.0
+offset_right = 359.0
+offset_bottom = 326.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_6vr2p")
+theme_override_font_sizes/font_size = 200
+text = "START"
+
+[node name="quit" type="Label" parent="." unique_id=981999518]
+offset_left = 39.0
+offset_top = 251.0
+offset_right = 359.0
+offset_bottom = 454.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_6vr2p")
+theme_override_font_sizes/font_size = 200
+text = "QUIT"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=403824424]
+position = Vector2(-163, -159)
+texture = ExtResource("4_f60ng")
+
+[node name="Button" type="Button" parent="." unique_id=1239557177]
+z_index = -1
+offset_left = 35.0
+offset_top = 174.0
+offset_right = 279.0
+offset_bottom = 266.0
+
+[node name="Button2" type="Button" parent="." unique_id=302604507]
+z_index = -1
+offset_left = 35.0
+offset_top = 304.0
+offset_right = 240.0
+offset_bottom = 396.0
+
+[node name="Button3" type="Button" parent="." unique_id=1235487766]
+z_index = -1
+offset_left = 26.0
+offset_top = 22.0
+offset_right = 141.0
+offset_bottom = 137.0
+
+[node name="transparent" type="Sprite2D" parent="." unique_id=1419821682]
+position = Vector2(743.00006, 320)
+scale = Vector2(1.1275362, 0.8516229)
+texture = ExtResource("5_bismi")
+
+[node name="transparent2" type="Sprite2D" parent="." unique_id=570061807]
+position = Vector2(743.00006, 320)
+scale = Vector2(1.1275362, 0.8516229)
+texture = ExtResource("5_bismi")
+
+[node name="creditstitle" type="Label" parent="." unique_id=1502146646]
+offset_left = 562.0
+offset_top = 17.0
+offset_right = 937.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0.12156863, 0.42745098, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("3_6vr2p")
+theme_override_font_sizes/font_size = 200
+text = "Settings"
+
+[node name="credits" type="Label" parent="." unique_id=1070748966]
+offset_left = 397.0
+offset_top = 172.0
+offset_right = 1085.0
+offset_bottom = 331.0
+theme_override_colors/font_color = Color(0.12156863, 0.42745098, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("3_6vr2p")
+theme_override_font_sizes/font_size = 60

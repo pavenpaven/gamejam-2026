@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bvinkv7ogxj7h" path="res://Assets/Textures/texture_tutorial.PNG" id="3_fp2oq"]
 [ext_resource type="FontFile" uid="uid://bnsaqjw4tdtu3" path="res://Assets/m3x6.ttf" id="4_yosvi"]
 [ext_resource type="Texture2D" uid="uid://cwyje6f0nr8i0" path="res://Assets/Textures/texture_gear_wheel.PNG" id="5_2qdx2"]
+[ext_resource type="AudioStream" uid="uid://dmr56fex4n0jx" path="res://Assets/Sounds/quiet_pizza_music.mp3" id="7_3eqdi"]
 
 [node name="Node2D" type="Node2D" unique_id=2131242177]
 script = ExtResource("1_2qdx2")
@@ -69,6 +70,12 @@ offset_left = 26.0
 offset_top = 22.0
 offset_right = 141.0
 offset_bottom = 137.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=229440961]
+stream = ExtResource("7_3eqdi")
+volume_db = -4.374
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_exit_pressed"]
