@@ -157,6 +157,8 @@ func generate_challange():
 		label.z_index = -1
 	if round_num == 0:
 		timer.start(120)
+	elif Globals.casual_mode:
+		timer.start(120)
 	else:
 		timer.start(timer_length)
 	timer_length = timer_length - timer_length * 0.05

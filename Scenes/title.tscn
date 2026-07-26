@@ -107,7 +107,7 @@ Mattias Burman (pavenpaven)
 Art- glassfishthing
 Game design-
 Mattias Burman (pavenpaven), glassfishthing,
-vadskaalfredhete
+wet tent, Chiminiio
 Sound design- glassfishthing
 Font from Daniel Linssen (itch.io)"
 
@@ -206,6 +206,18 @@ parameters/looping = true
 [node name="sfx" type="AudioStreamPlayer2D" parent="." unique_id=1190113337]
 stream = ExtResource("21_yrftc")
 volume_db = -3.402
+
+[node name="Casualexplanation" type="Label" parent="." unique_id=2127698544]
+z_index = -1
+offset_left = 470.0
+offset_top = 377.0
+offset_right = 1382.0
+offset_bottom = 584.0
+theme_override_colors/font_color = Color(0.12156863, 0.42745098, 0.9254902, 1)
+theme_override_fonts/font = ExtResource("3_7emq5")
+theme_override_font_sizes/font_size = 64
+text = "Casual mode sets the 
+countdown to constant 2 min"
 
 [connection signal="button_down" from="Button" to="." method="_on_start_down"]
 [connection signal="pressed" from="Button" to="." method="_on_start_pressed"]

@@ -1,5 +1,6 @@
 extends Node
 
+
 @onready var sfx          = $sfx
 @onready var trans1       = $Transparent        
 @onready var trans2       = $Transparent2       
@@ -24,6 +25,8 @@ extends Node
 
 @onready var normal_arrow = $Normalarrow
 @onready var casual_arrow = $Casualarrow
+
+@onready var casualexp    = $Casualexplanation
 
 
 var credits_up  = false
@@ -79,6 +82,7 @@ func reset_layout():
 
 	creditstitle.z_index = -1
 	credits.z_index      = -1
+	casualexp.z_index = -1
 
 	
 
@@ -98,6 +102,7 @@ func _on_settings_pressed() -> void:
 		dw_normal.z_index = 0
 		up_casual.z_index = 0
 		dw_casual.z_index = 0
+		casualexp.z_index = 0
 		fix_casual()
 
 func _on_credits_pressed() -> void:
