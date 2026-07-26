@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dym143ee0l2ka" path="res://Scripts/title.gd" id="5_2qdx2"]
 
 [node name="credits" type="Node2D" unique_id=358625241]
+script = ExtResource("5_2qdx2")
 
 [node name="side" type="Sprite2D" parent="." unique_id=960287751]
 position = Vector2(7, 323)
@@ -49,7 +50,6 @@ offset_left = 35.0
 offset_top = 174.0
 offset_right = 279.0
 offset_bottom = 266.0
-script = ExtResource("5_2qdx2")
 
 [node name="Button2" type="Button" parent="." unique_id=1403682373]
 z_index = -1
@@ -65,13 +65,19 @@ offset_top = 22.0
 offset_right = 141.0
 offset_bottom = 137.0
 
-[node name="transparent" type="Sprite2D" parent="." unique_id=1546311634]
+[node name="Button4" type="Button" parent="." unique_id=1545865788]
+offset_left = 39.0
+offset_top = 437.0
+offset_right = 266.0
+offset_bottom = 533.0
+
+[node name="Transparent" type="Sprite2D" parent="." unique_id=1546311634]
 z_index = -1
 position = Vector2(743.00006, 320)
 scale = Vector2(1.1275362, 0.8516229)
 texture = ExtResource("5_1wbrc")
 
-[node name="transparent2" type="Sprite2D" parent="." unique_id=880149282]
+[node name="Transparent2" type="Sprite2D" parent="." unique_id=880149282]
 z_index = -1
 position = Vector2(743.00006, 320)
 scale = Vector2(1.1275362, 0.8516229)
@@ -106,6 +112,8 @@ vadskaalfredhete
 Sound design- glassfishthing
 Font from Daniel Linssen (itch.io)"
 
+[connection signal="pressed" from="Button" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Button" to="Button" method="_on_start_pressed"]
-[connection signal="pressed" from="Button2" to="Button" method="_on_exit_pressed"]
-[connection signal="pressed" from="Button3" to="Button" method="_on_settings_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_credits_pressed"]
