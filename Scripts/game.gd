@@ -25,6 +25,9 @@ var round_num    = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Globals.casual_mode:
+		timer_length = 300
+
 	Globals.rounds_done = 0
 	for i in range(5):
 		var sp = Sprite2D.new()

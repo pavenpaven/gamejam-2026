@@ -53,6 +53,7 @@ var separate_symbol_tex
 var neigh_good_tex
 var neigh_bad_tex
 var color_symbol_texs = []
+var casual_mode = false
 
 var color_symbols_paths = [
 	"dialogue_blue.PNG",
